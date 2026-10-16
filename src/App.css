@@ -516,3 +516,16 @@ footer h2 {
 }
 
 .experience-highlight { color: var(--accent); font-weight: 600; line-height: 1.7; border-left: 3px solid var(--border-color); padding-left: 16px; margin: 24px 0; }
+
+.bi-architecture { margin-top: 18px; border-top: 1px solid var(--border-color); padding-top: 18px; }
+.bi-architecture summary { color: var(--accent); cursor: pointer; font-weight: 600; font-size: 14px; line-height: 1.6; }
+.bi-architecture summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+.bi-architecture h4 { font-size: 14px; color: var(--text-primary); margin: 20px 0 12px; }
+.bi-architecture .architecture-note { font-size: 13px; line-height: 1.8; }
+.architecture-sources { list-style: none; padding: 0; display: grid; gap: 8px; }
+.architecture-sources li { background: var(--bg-soft); border: 1px solid var(--border-color); padding: 10px; border-radius: 6px; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.architecture-controls { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; padding: 4px; border: 1px solid var(--border-color); border-radius: 9px; }
+.architecture-path { list-style: none; padding: 0; margin: 20px 0; }
+.architecture-path li { position: relative; display: flex; align-items: flex-start; gap: 10px; border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 26px; font-size: 13px; line-height: 1.6; }
+.architecture-path li:not(:last-child)::after { content: '↓'; position: absolute; left: 24px; bottom: -24px; color: var(--accent); }
+.architecture-step { color: var(--accent); font-weight: 700; }

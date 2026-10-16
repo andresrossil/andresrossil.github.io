@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { career } from './career'
+import BIArchitecture from './BIArchitecture'
 
 const currentYear = new Date().getFullYear()
 
@@ -278,6 +279,8 @@ function App() {
                   <dd>{background.cases[index].result}</dd>
                 </dl>
               </details>
+
+              {index === 0 && <BIArchitecture language={language} />}
 
               <div className="project-technologies">
                 {project.technologies.map(tech => (
