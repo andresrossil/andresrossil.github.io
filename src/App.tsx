@@ -295,12 +295,22 @@ function App() {
           {t.contactDescription}
         </p>
 
+        <div className="contact-actions">
         <a
           className="primary contact-button"
           href="mailto:nestorrossil@hotmail.com"
         >
           {t.contactButton} →
         </a>
+        <a
+          className="secondary contact-button"
+          href="https://www.linkedin.com/in/andres-rossil-9b958364/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn ↗
+        </a>
+        </div>
 
         <div className="footer-bottom">
           <span>

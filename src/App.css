@@ -409,6 +409,13 @@ footer h2 {
   margin: 0 auto 30px;
 }
 
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
 .footer-bottom {
   display: flex;
   justify-content: space-between;
