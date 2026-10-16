@@ -153,7 +153,7 @@ function App() {
     const project = t.projects[caseIndex]
     const caseStudy = background.cases[caseIndex]
     return (
-      <main className="portfolio project-page">
+      <main className={`portfolio project-page ${caseIndex === 0 ? 'bi-project' : ''}`}>
         <nav className="navbar">
           <a className="logo" href="#inicio">AR<span>.</span></a>
           <div className="language-switch" role="group" aria-label="Language / Idioma">

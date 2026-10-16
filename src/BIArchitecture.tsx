@@ -7,6 +7,8 @@ const copy = {
     sources: 'Information sources',
     categories: ['ERP / Enterprise Systems', 'Warehouse Management System (WMS)', 'Business Applications / SQL Server', 'Excel / Flat Files', 'External Partner Data'],
     direct: 'Direct Query', etl: 'ETL Process',
+    access: 'SQL access layer',
+    mechanisms: 'Alternative or complementary access mechanisms',
     directNote: 'SQL query path for compatible sources. Files and external data may require prior loading. This represents a query workflow, not a claim that every source supports Power BI DirectQuery.',
     etlNote: 'Data integration through SSIS and SQL Server. Select a stage to inspect its purpose and technologies.',
     directSteps: [
@@ -33,6 +35,8 @@ const copy = {
     sources: 'Fuentes de información',
     categories: ['ERP / Sistemas empresariales', 'Sistema de gestión de almacenes (WMS)', 'Aplicaciones empresariales / SQL Server', 'Excel / Archivos planos', 'Datos de socios externos'],
     direct: 'Consulta directa', etl: 'Proceso ETL',
+    access: 'Capa de acceso SQL',
+    mechanisms: 'Mecanismos de acceso alternativos o complementarios',
     directNote: 'Recorrido de consulta SQL para fuentes compatibles. Los archivos y datos externos pueden requerir carga previa. Representa un flujo de consulta, sin afirmar que todas las fuentes admiten Power BI DirectQuery.',
     etlNote: 'Integración de datos mediante SSIS y SQL Server. Selecciona una etapa para consultar su función y tecnologías.',
     directSteps: [
@@ -72,9 +76,22 @@ export default function BIArchitecture({ language }: { language: 'EN' | 'ES' }) 
         {(['direct', 'etl'] as const).map(option => <button key={option} type="button" className={`language-btn ${path === option ? 'active' : ''}`} aria-pressed={path === option} aria-controls={panelId} onClick={() => { setPath(option); setSelected(0) }}>{t[option]}</button>)}
       </div>
       <p className="architecture-note">{path === 'direct' ? t.directNote : t.etlNote}</p>
-      <ol className="architecture-flow">
-        {steps.map((step, index) => <li key={step.title}><button type="button" className={index === selected ? 'selected' : ''} aria-pressed={index === selected} aria-controls={panelId} onClick={() => setSelected(index)}><span>{index + 1}</span>{step.title}</button></li>)}
-      </ol>
+      {path === 'direct' ? (
+        <ol className="architecture-flow direct-access-flow">
+          <li className="sql-access-layer">
+            <h3>{t.access}</h3>
+            <p>{t.mechanisms}</p>
+            <div className="sql-access-options">
+              {t.directSteps.slice(0, 3).map((step, index) => <button key={step.title} type="button" className={selected === index ? 'selected' : ''} aria-pressed={selected === index} aria-controls={panelId} onClick={() => setSelected(index)}>{step.title}</button>)}
+            </div>
+          </li>
+          <li><button type="button" className={selected === 3 ? 'selected' : ''} aria-pressed={selected === 3} aria-controls={panelId} onClick={() => setSelected(3)}>{t.directSteps[3].title}</button></li>
+        </ol>
+      ) : (
+        <ol className="architecture-flow">
+          {steps.map((step, index) => <li key={step.title}><button type="button" className={index === selected ? 'selected' : ''} aria-pressed={index === selected} aria-controls={panelId} onClick={() => setSelected(index)}><span>{index + 1}</span>{step.title}</button></li>)}
+        </ol>
+      )}
       <div id={panelId} className="architecture-inspector" role="region" aria-label={t[path]} aria-live="polite"><h3>{steps[selected].title}</h3><p>{steps[selected].text}</p></div>
       <p className="architecture-note">{t.orchestration}</p>
       <aside className="ssrs-capability"><h3>{t.automationTitle}</h3><p>{t.automation}</p></aside>

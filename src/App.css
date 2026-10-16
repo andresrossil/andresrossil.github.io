@@ -568,3 +568,25 @@ footer h2 {
   .project-detail .bi-architecture { padding: 18px; }
   .project-detail .architecture-sources { grid-template-columns: 1fr; }
 }
+
+/* BI case readability and parallel SQL access mechanisms */
+.bi-project .section-description, .bi-project .case-overview dd,
+.bi-project .architecture-inspector p, .bi-project .ssrs-capability p { font-size: 17px; line-height: 1.8; }
+.bi-project .case-overview dt, .bi-project .case-highlight,
+.bi-project .project-technologies span, .bi-project .eyebrow { font-size: 15px; }
+.bi-project .project-technologies span { padding: 9px 12px; }
+.bi-project .bi-architecture .architecture-note,
+.bi-project .architecture-sources li, .bi-project .architecture-controls button { font-size: 15px; }
+.bi-project .architecture-flow button { font-size: 16px; }
+.bi-project .bi-architecture h3 { font-size: 19px; }
+.direct-access-flow > .sql-access-layer { flex: 3; padding: 20px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; }
+.sql-access-layer h3 { margin: 0 0 8px; }
+.sql-access-layer p { margin: 0 0 18px; color: var(--text-secondary); font-size: 15px; line-height: 1.6; }
+.sql-access-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.sql-access-options button { min-height: 85px; }
+@media (max-width: 900px) {
+  .sql-access-options { grid-template-columns: 1fr; }
+  .sql-access-options button { min-height: 52px; }
+  .bi-project .section-description, .bi-project .case-overview dd,
+  .bi-project .architecture-inspector p, .bi-project .ssrs-capability p { font-size: 16px; }
+}
