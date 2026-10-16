@@ -116,7 +116,7 @@ const skills = [
 ]
 
 function App() {
-  const [language, setLanguage] = useState<Language>('ES')
+  const [language, setLanguage] = useState<Language>('EN')
   const t = translations[language]
 
   const background = career[language]
