@@ -22,4 +22,4 @@ npm run preview
 
 GitHub Pages deployment is defined in `.github/workflows/deploy.yml`. A push to `main` builds and deploys `dist`; the repository Pages source must be GitHub Actions.
 
-See `CONTENT-NOTES.md` for source verification and publication status. Do not add internal business data or the source CV to public assets.
+See `CONTENT-NOTES.md` for source verification and publication status. Do not add internal business data to public assets. The Spanish CV is publicly downloadable at the user’s request.

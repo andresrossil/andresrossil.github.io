@@ -117,8 +117,8 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-  min-height: 620px;
-  padding: 110px 8%;
+  min-height: 560px;
+  padding: 90px 8% 64px;
 }
 
 .hero-content {
@@ -210,7 +210,7 @@ button {
   height: 280px;
   overflow: hidden;
   border-radius: 50%;
-  border: 1.5px solid var(--accent);
+  border: 1px solid var(--border-color);
   background: radial-gradient(
     circle,
     #e2edf8 0%,
@@ -220,7 +220,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 50px var(--accent-soft);
+  box-shadow: 0 10px 28px var(--accent-soft);
 }
 
 .decoration-circle img {
@@ -468,7 +468,7 @@ footer h2 {
 
   .hero {
     min-height: auto;
-    padding: 85px 6%;
+    padding: 60px 6% 44px;
   }
 
   .hero h1 {
@@ -514,3 +514,5 @@ footer h2 {
     transition-duration: 0.01ms !important;
   }
 }
+
+.experience-highlight { color: var(--accent); font-weight: 600; line-height: 1.7; border-left: 3px solid var(--border-color); padding-left: 16px; margin: 24px 0; }

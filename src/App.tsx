@@ -13,8 +13,10 @@ const translations = {
     eyebrow: 'BUSINESS INTELLIGENCE & ERP SOLUTIONS',
     role: 'Senior BI & ERP Consultant',
     intro:
-      'Transforming business data and processes into intelligent solutions. Over 13 years of experience in Business Intelligence, automation, and enterprise systems.',
+      'I designed and implemented a corporate Business Intelligence platform from the ground up. With over 13 years of experience, I connect data and business processes using SQL Server, Power BI, SSIS, Power Apps and SAP.',
     explore: 'Explore Projects',
+    downloadCV: 'Download CV (PDF · Spanish)',
+    sapExperience: '10+ years of experience in SAP Business One',
     years: 'Years of Experience',
     dashboards: 'Power BI Dashboards',
     etl: 'ETL Processes',
@@ -59,8 +61,10 @@ const translations = {
     eyebrow: 'INTELIGENCIA DE NEGOCIOS Y SOLUCIONES ERP',
     role: 'Consultor Senior de BI y ERP',
     intro:
-      'Transformando datos y procesos empresariales en soluciones inteligentes. Más de 13 años de experiencia en Inteligencia de Negocios, automatización y sistemas empresariales.',
+      'Diseñé e implementé desde cero una plataforma corporativa de Business Intelligence. Con más de 13 años de experiencia, conecto datos y procesos empresariales con SQL Server, Power BI, SSIS, Power Apps y SAP.',
     explore: 'Explorar proyectos',
+    downloadCV: 'Descargar CV (PDF · Español)',
+    sapExperience: 'Más de 10 años de experiencia en SAP Business One',
     years: 'Años de experiencia',
     dashboards: 'Dashboards Power BI',
     etl: 'Procesos ETL',
@@ -189,6 +193,9 @@ function App() {
             >
               GitHub ↗
             </a>
+            <a className="secondary" href="/andres-rossil-cv-es.pdf" download="Andres-Rossil-CV-ES.pdf" type="application/pdf">
+              {t.downloadCV} <span aria-hidden="true">↓</span>
+            </a>
           </div>
         </div>
 
@@ -224,6 +231,8 @@ function App() {
         <p className="section-description">
           {t.experienceDescription}
         </p>
+
+        <p className="experience-highlight">{t.sapExperience}</p>
 
         <ol className="timeline">
           {background.timeline.map(job => (

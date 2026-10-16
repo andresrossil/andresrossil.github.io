@@ -6,7 +6,7 @@ Source: supplied Spanish CV, NESTOR ANDRES ROSSIL - BCV - ES.pdf.
 - BI: the CV documents over 20 SSIS ETL processes, over 50 Power BI dashboards and over 50 Crystal Reports/SSRS reports.
 - Warehouse applications: the CV documents Power Apps for physical inventory counts and picking. These are described as warehouse support applications, without claiming a complete WMS implementation.
 - SAP Business One: the CV documents three VB.NET add-ons, SQL queries, stored procedures, formatted searches and approval procedures.
-- No financial savings, productivity percentages, client records, internal screenshots or proprietary code are included. The source CV is not copied into the public site.
+- No financial savings, productivity percentages, client records, internal screenshots or proprietary code are included. At the user’s explicit request, the supplied Spanish CV is available as public/andres-rossil-cv-es.pdf for download.
 - The current ERP position is listed as ongoing in the supplied CV; confirm this when updating the portfolio later.
 
 # Publication
@@ -17,4 +17,4 @@ Validate with `npm ci`, `npm run lint` and `npm run build` using Node 22.12 or n
 
 The included `.github/workflows/deploy.yml` builds on pushes to `main` or manual runs and publishes `dist` through GitHub Pages. In the repository, Pages must use GitHub Actions as its source. Repository settings were not verified through the API.
 
-The user site uses the root path `/`; no repository subpath is needed. Review and merge the prepared branch into `main` to trigger publication. No push or deployment has been performed by this task.
+The user site uses the root path `/`; no repository subpath is needed. Review and merge the prepared branch into `main` to trigger publication. The approved portfolio has been published to main and GitHub Pages. Subsequent approved changes are validated before publication.
