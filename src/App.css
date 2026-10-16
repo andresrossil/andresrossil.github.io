@@ -1,18 +1,20 @@
 :root {
   font-family: Inter, Arial, sans-serif;
-  color: #e2e8f0;
-  background: #0b1420;
+  color: #24364b;
+  background: #ffffff;
+  color-scheme: light;
   scroll-behavior: smooth;
 
-  /* Paleta de colores ajustada */
-  --accent: #2dd4bf;           /* Turquesa ejecutivo (menos neón) */
-  --accent-hover: #14b8a6;     /* Tono para hovers */
-  --accent-soft: #2dd4bf1a;    /* Transparencias para brillos suaves */
-  --text-primary: #f8fafc;     /* Blanco suave no encandilante */
-  --text-secondary: #94a3b8;   /* Gris neutro para subtítulos */
-  --bg-dark: #0b1420;          /* Fondo base */
-  --bg-card: #132230;          /* Fondo tarjetas */
-  --border-color: #233547;     /* Líneas de división */
+  --accent: #245a91;
+  --accent-hover: #1b4774;
+  --accent-soft: #245a9114;
+  --text-primary: #233d59;
+  --text-secondary: #586b7e;
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-soft: #f4f7fb;
+  --bg-tag: #eaf1f8;
+  --border-color: #dce5ef;
 }
 
 * {
@@ -21,7 +23,7 @@
 
 body {
   margin: 0;
-  background-color: var(--bg-dark);
+  background-color: var(--bg-page);
 }
 
 a {
@@ -45,7 +47,7 @@ button {
   align-items: center;
   padding: 28px 8%;
   border-bottom: 1px solid var(--border-color);
-  background: var(--bg-dark);
+  background: var(--bg-page);
 }
 
 .logo {
@@ -80,7 +82,7 @@ button {
   align-items: center;
   gap: 5px;
   padding: 4px;
-  background: #152432;
+  background: var(--bg-soft);
   border: 1px solid var(--border-color);
   border-radius: 9px;
 }
@@ -99,12 +101,12 @@ button {
 
 .language-btn:hover:not(.active) {
   color: var(--accent);
-  background: #1e3244;
+  background: var(--bg-tag);
 }
 
 .language-btn.active {
   background: var(--accent);
-  color: #0b1420;
+  color: #ffffff;
 }
 
 
@@ -153,7 +155,7 @@ button {
 .description {
   max-width: 650px;
   line-height: 1.9;
-  color: #8fa0b0;
+  color: var(--text-secondary);
   font-size: 17px;
 }
 
@@ -173,22 +175,22 @@ button {
   transition: all 0.25s ease;
 }
 
-/* Botón principal equilibrado (menos invasivo) */
+/* PRIMARY ACTION */
 .primary {
-  background: #0f766e;
+  background: var(--accent);
   color: #ffffff;
   border: 1px solid var(--accent);
 }
 
 .primary:hover {
-  background: var(--accent);
-  color: #0b1420;
+  background: var(--accent-hover);
+  color: #ffffff;
   transform: translateY(-3px);
   box-shadow: 0 10px 20px -10px var(--accent-soft);
 }
 
 .secondary {
-  border: 1px solid #33475b;
+  border: 1px solid var(--border-color);
   color: var(--text-primary);
 }
 
@@ -210,9 +212,9 @@ button {
   border: 1.5px solid var(--accent);
   background: radial-gradient(
     circle,
-    #132e38 0%,
-    #0f1d28 65%,
-    #0b1420 100%
+    #e2edf8 0%,
+    #f0f5fb 65%,
+    #ffffff 100%
   );
   display: flex;
   align-items: center;
@@ -235,7 +237,7 @@ button {
   gap: 25px;
   flex-wrap: wrap;
   padding: 55px 8%;
-  background: #0f1a26;
+  background: var(--bg-soft);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
 }
@@ -281,7 +283,7 @@ button {
 }
 
 .tags span {
-  background: #142332;
+  background: var(--bg-soft);
   padding: 12px 18px;
   border-radius: 8px;
   color: var(--text-primary);
@@ -308,7 +310,7 @@ button {
   height: 10px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 5px var(--bg-dark);
+  box-shadow: 0 0 0 5px var(--bg-page);
 }
 .timeline-period { color: var(--accent); font-size: 13px; margin: 0 0 10px; }
 .timeline-item h3 { color: var(--text-primary); margin: 0; font-size: 21px; line-height: 1.5; }
@@ -321,7 +323,7 @@ button {
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
 
 .projects-section {
-  background: #09101a;
+  background: var(--bg-soft);
 }
 
 .projects {
@@ -374,8 +376,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 
 .project-technologies span {
   font-size: 11px;
-  background: #1a2f3d;
-  color: #92e0d5;
+  background: var(--bg-tag);
+  color: var(--accent);
   border-radius: 5px;
   padding: 7px 10px;
 }
@@ -385,7 +387,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 footer {
   text-align: center;
   padding: 85px 8% 35px;
-  background: #0f1a26;
+  background: var(--bg-soft);
 }
 
 footer h2 {
@@ -407,7 +409,7 @@ footer h2 {
   margin-top: 100px;
   padding-top: 25px;
   border-top: 1px solid var(--border-color);
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 13px;
 }
 
