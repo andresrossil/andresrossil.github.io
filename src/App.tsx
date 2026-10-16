@@ -13,47 +13,46 @@ const translations = {
     eyebrow: 'BUSINESS INTELLIGENCE & ERP SOLUTIONS',
     role: 'Senior BI & ERP Consultant',
     intro:
-      'I designed and implemented a corporate Business Intelligence platform from the ground up. With over 13 years of experience, I connect data and business processes using SQL Server, Power BI, SSIS, Power Apps and SAP.',
+      '13+ years in BI and ERP, including end-to-end responsibility for the design and implementation of a corporate BI platform. Technical experience with SQL Server, Power BI, SSIS, Power Apps and SAP.',
     explore: 'Explore Projects',
-    downloadCV: 'Download CV (PDF · Spanish)',
-    sapExperience: '10+ years of experience in SAP Business One',
+    sapExperience: '10+ years working with SAP Business One as part of broader BI and ERP responsibilities.',
     years: 'Years of Experience',
     dashboards: 'Power BI Dashboards',
     etl: 'ETL Processes',
     experienceLabel: 'PROFESSIONAL BACKGROUND',
     experienceTitle: 'Professional Experience',
     experienceDescription:
-      'Specialist in data solutions, systems integration, business process automation, and ERP platforms.',
+      'Experience spanning BI architecture, ETL development, data modeling, enterprise applications and ERP functional support.',
     projectsLabel: 'FEATURED WORK',
     projectsTitle: 'Selected Case Studies',
     projects: [
       {
         category: 'DATA & ANALYTICS',
-        title: 'Enterprise BI Platform',
+        title: 'Corporate BI Platform',
         description:
-          'Designed and implemented a corporate Business Intelligence platform, integrating data sources, ETL processes, centralized reporting models, and executive dashboards.',
+          'Corporate BI platform combining SQL Server reporting databases, SSIS data integration, centralized data models and Power BI dashboards.',
         technologies: ['SQL Server', 'SSIS', 'Power BI'],
       },
       {
         category: 'BUSINESS APPLICATIONS',
-        title: 'Warehouse Management Solutions',
+        title: 'Warehouse Operations Applications',
         description:
-          'Developed business applications using Microsoft Power Apps to support inventory counts, warehouse picking, and operational workflows.',
+          'Power Apps applications supporting physical inventory counts, warehouse picking and operational workflows.',
         technologies: ['Power Apps', 'Inventory', 'Automation'],
       },
       {
         category: 'ERP AUTOMATION',
-        title: 'SAP Business One Automation',
+        title: 'SAP Business One Extensions and Automation',
         description:
-          'Developed SQL queries, stored procedures, approval workflows, and VB.NET add-ons to support ERP operations and business process automation.',
+          'SAP Business One extensions using VB.NET, SQL queries, stored procedures, formatted searches and approval procedures.',
         technologies: ['SAP Business One', 'SQL', 'VB.NET'],
       },
     ],
     contactLabel: 'GET IN TOUCH',
-    contactTitle: "Let's build something valuable.",
+    contactTitle: 'Professional Contact',
     contactDescription:
-      'Interested in Business Intelligence, ERP solutions, or process automation? Let’s connect.',
-    contactButton: 'Contact Me',
+      'For employment opportunities, technical collaboration or professional enquiries in Business Intelligence, data integration, Power Apps and SAP.',
+    contactButton: 'Email',
     footer: 'Professional Portfolio',
   },
   ES: {
@@ -61,47 +60,46 @@ const translations = {
     eyebrow: 'INTELIGENCIA DE NEGOCIOS Y SOLUCIONES ERP',
     role: 'Consultor Senior de BI y ERP',
     intro:
-      'Diseñé e implementé desde cero una plataforma corporativa de Business Intelligence. Con más de 13 años de experiencia, conecto datos y procesos empresariales con SQL Server, Power BI, SSIS, Power Apps y SAP.',
+      '13+ años en BI y ERP, con responsabilidad integral en el diseño e implementación de una plataforma corporativa de BI. Experiencia técnica con SQL Server, Power BI, SSIS, Power Apps y SAP.',
     explore: 'Explorar proyectos',
-    downloadCV: 'Descargar CV (PDF · Español)',
-    sapExperience: 'Más de 10 años de experiencia en SAP Business One',
+    sapExperience: 'Más de 10 años trabajando con SAP Business One dentro de responsabilidades más amplias de BI y ERP.',
     years: 'Años de experiencia',
     dashboards: 'Dashboards Power BI',
     etl: 'Procesos ETL',
     experienceLabel: 'TRAYECTORIA PROFESIONAL',
     experienceTitle: 'Experiencia profesional',
     experienceDescription:
-      'Especialista en soluciones de datos, integración de sistemas, automatización de procesos empresariales y plataformas ERP.',
+      'Experiencia en arquitectura de BI, desarrollo de procesos ETL, modelado de datos, aplicaciones empresariales y soporte funcional ERP.',
     projectsLabel: 'TRABAJOS DESTACADOS',
-    projectsTitle: 'Casos de éxito',
+    projectsTitle: 'Casos de experiencia',
     projects: [
       {
         category: 'DATOS Y ANALÍTICA',
         title: 'Plataforma corporativa de BI',
         description:
-          'Diseño e implementación de una plataforma corporativa de Inteligencia de Negocios, integrando fuentes de datos, procesos ETL, modelos centralizados de reportería y dashboards ejecutivos.',
+          'Plataforma corporativa de BI que integra bases de reportería en SQL Server, procesos de integración con SSIS, modelos de datos centralizados y dashboards en Power BI.',
         technologies: ['SQL Server', 'SSIS', 'Power BI'],
       },
       {
         category: 'APLICACIONES EMPRESARIALES',
-        title: 'Soluciones de gestión de almacenes',
+        title: 'Aplicaciones para operaciones de almacén',
         description:
-          'Desarrollo de aplicaciones empresariales con Microsoft Power Apps para conteos físicos, picking de almacén y procesos operativos.',
+          'Aplicaciones Power Apps para conteos físicos, picking de almacén y procesos operativos.',
         technologies: ['Power Apps', 'Inventarios', 'Automatización'],
       },
       {
         category: 'AUTOMATIZACIÓN ERP',
-        title: 'Automatización SAP Business One',
+        title: 'Extensiones y automatización de SAP Business One',
         description:
-          'Desarrollo de consultas SQL, procedimientos almacenados, flujos de aprobación y complementos VB.NET para operaciones ERP y automatización empresarial.',
+          'Extensiones de SAP Business One mediante VB.NET, consultas SQL, procedimientos almacenados, búsquedas formateadas y procedimientos de aprobación.',
         technologies: ['SAP Business One', 'SQL', 'VB.NET'],
       },
     ],
     contactLabel: 'CONTACTO',
-    contactTitle: 'Construyamos algo valioso.',
+    contactTitle: 'Contacto profesional',
     contactDescription:
-      '¿Te interesan las soluciones de Inteligencia de Negocios, ERP o automatización de procesos? Conversemos.',
-    contactButton: 'Contactar',
+      'Contacto para oportunidades laborales, colaboración técnica o consultas profesionales en Business Intelligence, integración de datos, Power Apps y SAP.',
+    contactButton: 'Correo electrónico',
     footer: 'Portafolio profesional',
   },
 }
@@ -192,9 +190,6 @@ function App() {
               rel="noopener noreferrer"
             >
               GitHub ↗
-            </a>
-            <a className="secondary" href="/andres-rossil-cv-es.pdf" download="Andres-Rossil-CV-ES.pdf" type="application/pdf">
-              {t.downloadCV} <span aria-hidden="true">↓</span>
             </a>
           </div>
         </div>
