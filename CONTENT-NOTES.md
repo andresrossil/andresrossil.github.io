@@ -18,3 +18,5 @@ Validate with `npm ci`, `npm run lint` and `npm run build` using Node 22.12 or n
 The included `.github/workflows/deploy.yml` builds on pushes to `main` or manual runs and publishes `dist` through GitHub Pages. In the repository, Pages must use GitHub Actions as its source. Repository settings were not verified through the API.
 
 The user site uses the root path `/`; no repository subpath is needed. Review and merge the prepared branch into `main` to trigger publication. The approved portfolio has been published to main and GitHub Pages. Subsequent approved changes are validated before publication.
+
+- User-confirmed SSRS experience: reverse engineering of subscription XML to implement fully automatic dynamic report distribution, using SQL tables or business actions to determine recipients without manual subscription changes; SQL Server Agent and stored procedures for process automation. No actual XML, table names, recipient data or internal configuration is published.

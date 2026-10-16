@@ -31,7 +31,7 @@ const translations = {
         title: 'Corporate BI Platform',
         description:
           'Corporate BI platform combining SQL Server reporting databases, SSIS data integration, centralized data models and Power BI dashboards.',
-        technologies: ['SQL Server', 'SSIS', 'Power BI'],
+        technologies: ['SQL Server', 'SSIS', 'Power BI', 'SSRS', 'SQL Server Agent'],
       },
       {
         category: 'BUSINESS APPLICATIONS',
@@ -78,7 +78,7 @@ const translations = {
         title: 'Plataforma corporativa de BI',
         description:
           'Plataforma corporativa de BI que integra bases de reportería en SQL Server, procesos de integración con SSIS, modelos de datos centralizados y dashboards en Power BI.',
-        technologies: ['SQL Server', 'SSIS', 'Power BI'],
+        technologies: ['SQL Server', 'SSIS', 'Power BI', 'SSRS', 'SQL Server Agent'],
       },
       {
         category: 'APLICACIONES EMPRESARIALES',
