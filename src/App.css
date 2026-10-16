@@ -529,3 +529,42 @@ footer h2 {
 .architecture-path li { position: relative; display: flex; align-items: flex-start; gap: 10px; border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 26px; font-size: 13px; line-height: 1.6; }
 .architecture-path li:not(:last-child)::after { content: '↓'; position: absolute; left: 24px; bottom: -24px; color: var(--accent); }
 .architecture-step { color: var(--accent); font-weight: 700; }
+
+/* Independent case study views */
+.projects { align-items: stretch; }
+.project-card { height: 100%; }
+.case-link { color: var(--accent); font-size: 14px; font-weight: 600; border-top: 1px solid var(--border-color); padding-top: 18px; line-height: 1.6; }
+.back-projects { display: inline-block; color: var(--accent); margin-bottom: 32px; }
+.project-detail { max-width: 1600px; margin: auto; padding-top: 50px; }
+.project-detail h1 { font-size: clamp(32px, 5vw, 56px); color: var(--text-primary); line-height: 1.2; }
+.case-overview { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 36px 0; }
+.case-overview dt { font-weight: 700; color: var(--text-primary); }
+.case-overview dd { margin: 12px 0 0; line-height: 1.8; color: var(--text-secondary); }
+.project-detail .bi-architecture { margin: 45px 0; padding: 32px; background: var(--bg-soft); border: 1px solid var(--border-color); border-radius: 14px; }
+.project-detail .bi-architecture h2 { font-size: clamp(26px, 4vw, 36px); }
+.project-detail .bi-architecture h3 { font-size: 17px; color: var(--text-primary); }
+.project-detail .architecture-sources { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.project-detail .architecture-sources li { background: var(--bg-card); }
+.architecture-controls .language-btn.active { color: white; background: var(--accent); }
+.architecture-flow { display: flex; list-style: none; padding: 0; gap: 20px; margin: 24px 0; }
+.architecture-flow li { flex: 1; min-width: 0; position: relative; }
+.architecture-flow li:not(:last-child)::after { content: '→'; position: absolute; right: -17px; top: 40%; color: var(--accent); }
+.architecture-flow button { width: 100%; height: 100%; min-height: 110px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary); cursor: pointer; padding: 16px 10px; line-height: 1.5; overflow-wrap: anywhere; }
+.architecture-flow button.selected { border-color: var(--accent); background: var(--bg-tag); }
+.architecture-flow button span { display: block; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+.architecture-inspector { padding: 20px; border-left: 3px solid var(--accent); background: var(--bg-card); }
+.architecture-inspector p, .ssrs-capability p { line-height: 1.8; color: var(--text-secondary); }
+.ssrs-capability { margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 15px; }
+.project-detail > .contact-button { margin-top: 32px; }
+@media (max-width: 900px) {
+  .case-overview { grid-template-columns: 1fr; }
+  .project-detail .architecture-sources { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .architecture-flow { flex-direction: column; }
+  .architecture-flow button { min-height: auto; text-align: left; display: flex; gap: 14px; }
+  .architecture-flow button span { margin: 0; }
+  .architecture-flow li:not(:last-child)::after { content: '↓'; top: auto; bottom: -21px; left: 20px; right: auto; }
+}
+@media (max-width: 500px) {
+  .project-detail .bi-architecture { padding: 18px; }
+  .project-detail .architecture-sources { grid-template-columns: 1fr; }
+}

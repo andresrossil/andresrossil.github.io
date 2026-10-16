@@ -118,8 +118,12 @@ const skills = [
   'ETL / ELT',
 ]
 
+const projectRoutes = ['corporate-bi-platform', 'warehouse-operations', 'sap-business-one']
+
 function App() {
   const [language, setLanguage] = useState<Language>('EN')
+  const [hash, setHash] = useState(() => window.location.hash)
+  const caseIndex = projectRoutes.findIndex(route => hash === `#/projects/${route}`)
   const t = translations[language]
 
   const background = career[language]
@@ -130,6 +134,50 @@ function App() {
       ? 'Andrés Rossil | Consultor Senior de BI y ERP'
       : 'Andrés Rossil | Senior BI & ERP Consultant'
   }, [language])
+
+  useEffect(() => {
+    const navigate = () => setHash(window.location.hash)
+    window.addEventListener('hashchange', navigate)
+    return () => window.removeEventListener('hashchange', navigate)
+  }, [])
+
+  useEffect(() => {
+    if (caseIndex >= 0) {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    } else if (hash.startsWith('#') && !hash.startsWith('#/')) {
+      document.getElementById(hash.slice(1))?.scrollIntoView()
+    }
+  }, [hash, caseIndex])
+
+  if (caseIndex >= 0) {
+    const project = t.projects[caseIndex]
+    const caseStudy = background.cases[caseIndex]
+    return (
+      <main className="portfolio project-page">
+        <nav className="navbar">
+          <a className="logo" href="#inicio">AR<span>.</span></a>
+          <div className="language-switch" role="group" aria-label="Language / Idioma">
+            {(['ES', 'EN'] as const).map(option => <button key={option} type="button" className={`language-btn ${language === option ? 'active' : ''}`} aria-pressed={language === option} onClick={() => setLanguage(option)}>{option}</button>)}
+          </div>
+        </nav>
+        <section className="content project-detail">
+          <a className="back-projects" href="#proyectos">← {language === 'EN' ? 'Back to projects' : 'Volver a proyectos'}</a>
+          <p className="eyebrow">{project.category}</p>
+          <h1>{project.title}</h1>
+          <p className="section-description">{project.description}</p>
+          <strong className="case-highlight">{caseStudy.highlight}</strong>
+          <dl className="case-overview">
+            <div><dt>{background.objective}</dt><dd>{caseStudy.objective}</dd></div>
+            <div><dt>{background.solution}</dt><dd>{caseStudy.solution}</dd></div>
+            <div><dt>{background.result}</dt><dd>{caseStudy.result}</dd></div>
+          </dl>
+          {caseIndex === 0 && <BIArchitecture language={language} />}
+          <div className="project-technologies">{project.technologies.map(tech => <span key={tech}>{tech}</span>)}</div>
+          <a className="secondary contact-button" href="#proyectos">← {language === 'EN' ? 'Back to projects' : 'Volver a proyectos'}</a>
+        </section>
+      </main>
+    )
+  }
 
   return (
     <main className="portfolio">
@@ -268,19 +316,9 @@ function App() {
 
               <p>{project.description}</p>
 
-              <details className="case-study" key={language}>
-                <summary>{background.readCase}<span className="sr-only">: {project.title}</span></summary>
-                <dl className="case-details">
-                  <dt>{background.objective}</dt>
-                  <dd>{background.cases[index].objective}</dd>
-                  <dt>{background.solution}</dt>
-                  <dd>{background.cases[index].solution}</dd>
-                  <dt>{background.result}</dt>
-                  <dd>{background.cases[index].result}</dd>
-                </dl>
-              </details>
-
-              {index === 0 && <BIArchitecture language={language} />}
+              <a className="case-link" href={`#/projects/${projectRoutes[index]}`}>
+                {background.readCase} <span aria-hidden="true">→</span>
+              </a>
 
               <div className="project-technologies">
                 {project.technologies.map(tech => (

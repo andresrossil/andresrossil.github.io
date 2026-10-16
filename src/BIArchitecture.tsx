@@ -3,60 +3,81 @@ import { useId, useState } from 'react'
 const copy = {
   EN: {
     title: 'Conceptual BI Architecture',
-    note: 'Conceptual representation based on professional experience. It does not document the exact infrastructure of any company. Sources and connections are illustrative.',
+    note: 'Conceptual representation based on professional experience, not the exact infrastructure of any company. Sources and connections are illustrative.',
     sources: 'Information sources',
     categories: ['ERP / Enterprise Systems', 'Warehouse Management System (WMS)', 'Business Applications / SQL Server', 'Excel / Flat Files', 'External Partner Data'],
-    direct: 'Direct query', etl: 'ETL process',
-    directNote: 'Illustrative query path for compatible SQL data sources. Excel, flat files and partner data may require prior preparation or loading; not every source supports direct querying.',
-    etlNote: 'Illustrative integration path: extraction and transformation with SSIS, loading into SQL Server reporting models, and consumption through reporting and analytics tools.',
-    query: 'SQL Server · Queries and stored procedures',
-    transform: 'SSIS · Extraction and transformation',
-    model: 'SQL Server · Reporting databases and data models',
-    output: 'SSRS · Reports / Power BI · Dashboards',
-    automation: 'Automation: SQL Server Agent and stored procedures for process execution; customized SSRS report distribution.',
+    direct: 'Direct Query', etl: 'ETL Process',
+    directNote: 'SQL query path for compatible sources. Files and external data may require prior loading. This represents a query workflow, not a claim that every source supports Power BI DirectQuery.',
+    etlNote: 'Data integration through SSIS and SQL Server. Select a stage to inspect its purpose and technologies.',
+    directSteps: [
+      { title: 'SQL views', text: 'SQL Server views expose selected operational data for reporting.' },
+      { title: 'Queries', text: 'SQL queries retrieve and combine the data required by reports.' },
+      { title: 'Stored procedures', text: 'Stored procedures encapsulate parameterized retrieval and reporting logic in SQL Server.' },
+      { title: 'Reporting tools', text: 'SSRS reports and Power BI consume the prepared query outputs, according to the integration used.' },
+    ],
+    etlSteps: [
+      { title: 'Extraction', text: 'SSIS extracts data from compatible enterprise sources, files and external datasets.' },
+      { title: 'Staging', text: 'SQL Server staging tables hold extracted data before transformation.' },
+      { title: 'Cleaning & normalization', text: 'SSIS transformations and SQL stored procedures standardize formats, types and values.' },
+      { title: 'Validation', text: 'SQL checks and ETL rules assess data consistency before loading final tables.' },
+      { title: 'Final tables', text: 'SQL Server reporting tables and data models organize validated data for consumption.' },
+      { title: 'Information consumption', text: 'Power BI dashboards and SSRS reports use the consolidated reporting data.' },
+    ],
+    orchestration: 'Process orchestration: SQL Server Agent and stored procedures support scheduled execution and automation.',
+    automationTitle: 'Complementary capability · SSRS automation',
+    automation: 'SSRS customization developed through reverse engineering of subscription XML enables fully automatic report distribution to recipients determined by SQL tables or business actions, without manual subscription changes. No internal XML or configurations are shown.',
   },
   ES: {
     title: 'Arquitectura conceptual de BI',
-    note: 'Representación conceptual basada en la experiencia profesional. No documenta la infraestructura exacta de ninguna empresa. Las fuentes y conexiones son ilustrativas.',
+    note: 'Representación conceptual basada en la experiencia profesional, no en la infraestructura exacta de una empresa. Las fuentes y conexiones son ilustrativas.',
     sources: 'Fuentes de información',
     categories: ['ERP / Sistemas empresariales', 'Sistema de gestión de almacenes (WMS)', 'Aplicaciones empresariales / SQL Server', 'Excel / Archivos planos', 'Datos de socios externos'],
     direct: 'Consulta directa', etl: 'Proceso ETL',
-    directNote: 'Recorrido ilustrativo de consulta para fuentes SQL compatibles. Excel, archivos planos y datos de socios pueden requerir preparación o carga previa; no todas las fuentes admiten consulta directa.',
-    etlNote: 'Recorrido ilustrativo de integración: extracción y transformación con SSIS, carga en modelos de reportería de SQL Server y consumo mediante herramientas de reportería y análisis.',
-    query: 'SQL Server · Consultas y procedimientos almacenados',
-    transform: 'SSIS · Extracción y transformación',
-    model: 'SQL Server · Bases de reportería y modelos de datos',
-    output: 'SSRS · Reportes / Power BI · Dashboards',
-    automation: 'Automatización: SQL Server Agent y procedimientos almacenados para ejecutar procesos; distribución personalizada de reportes SSRS.',
+    directNote: 'Recorrido de consulta SQL para fuentes compatibles. Los archivos y datos externos pueden requerir carga previa. Representa un flujo de consulta, sin afirmar que todas las fuentes admiten Power BI DirectQuery.',
+    etlNote: 'Integración de datos mediante SSIS y SQL Server. Selecciona una etapa para consultar su función y tecnologías.',
+    directSteps: [
+      { title: 'Vistas SQL', text: 'Las vistas de SQL Server exponen datos operativos seleccionados para reportería.' },
+      { title: 'Consultas', text: 'Las consultas SQL recuperan y combinan los datos requeridos por los reportes.' },
+      { title: 'Procedimientos almacenados', text: 'Los procedimientos almacenados encapsulan consultas parametrizadas y lógica de reportería en SQL Server.' },
+      { title: 'Herramientas de reportería', text: 'Los reportes SSRS y Power BI consumen las salidas de consulta preparadas, según la integración utilizada.' },
+    ],
+    etlSteps: [
+      { title: 'Extracción', text: 'SSIS extrae datos de fuentes empresariales compatibles, archivos y conjuntos de datos externos.' },
+      { title: 'Staging', text: 'Las tablas de staging en SQL Server reciben los datos extraídos antes de su transformación.' },
+      { title: 'Limpieza y normalización', text: 'Las transformaciones de SSIS y los procedimientos almacenados SQL estandarizan formatos, tipos y valores.' },
+      { title: 'Validación', text: 'Las comprobaciones SQL y reglas ETL evalúan la consistencia antes de cargar las tablas finales.' },
+      { title: 'Tablas finales', text: 'Las tablas de reportería y modelos de datos en SQL Server organizan los datos validados para su consumo.' },
+      { title: 'Consumo de información', text: 'Los dashboards Power BI y reportes SSRS utilizan los datos consolidados de reportería.' },
+    ],
+    orchestration: 'Orquestación de procesos: SQL Server Agent y procedimientos almacenados permiten programar la ejecución y automatizar procesos.',
+    automationTitle: 'Capacidad complementaria · Automatización SSRS',
+    automation: 'Personalización de SSRS desarrollada mediante ingeniería inversa del XML de suscripciones para distribuir reportes de forma completamente automática a destinatarios definidos por tablas SQL o acciones del negocio, sin ajustes manuales de suscripciones. No se muestran XML ni configuraciones internas.',
   },
 }
 
 export default function BIArchitecture({ language }: { language: 'EN' | 'ES' }) {
   const [path, setPath] = useState<'direct' | 'etl'>('direct')
+  const [selected, setSelected] = useState(0)
   const panelId = useId()
   const t = copy[language]
-  const steps = path === 'direct' ? [t.query, t.output] : [t.transform, t.model, t.output]
+  const steps = path === 'direct' ? t.directSteps : t.etlSteps
 
   return (
-    <details className="bi-architecture">
-      <summary>{t.title}</summary>
+    <section className="bi-architecture" aria-labelledby={`${panelId}-heading`}>
+      <h2 id={`${panelId}-heading`}>{t.title}</h2>
       <p className="architecture-note">{t.note}</p>
-      <h4>{t.sources}</h4>
-      <ul className="architecture-sources">
-        {t.categories.map(source => <li key={source}>{source}</li>)}
-      </ul>
+      <h3>{t.sources}</h3>
+      <ul className="architecture-sources">{t.categories.map(source => <li key={source}>{source}</li>)}</ul>
       <div className="architecture-controls" role="group" aria-label={t.title}>
-        {(['direct', 'etl'] as const).map(option => (
-          <button key={option} type="button" className={`language-btn ${path === option ? 'active' : ''}`} aria-pressed={path === option} aria-controls={panelId} onClick={() => setPath(option)}>{t[option]}</button>
-        ))}
+        {(['direct', 'etl'] as const).map(option => <button key={option} type="button" className={`language-btn ${path === option ? 'active' : ''}`} aria-pressed={path === option} aria-controls={panelId} onClick={() => { setPath(option); setSelected(0) }}>{t[option]}</button>)}
       </div>
-      <div id={panelId} role="region" aria-label={t[path]} aria-live="polite">
-        <p className="architecture-note">{path === 'direct' ? t.directNote : t.etlNote}</p>
-        <ol className="architecture-path">
-          {steps.map((step, index) => <li key={step}><span className="architecture-step">{index + 1}</span>{step}</li>)}
-        </ol>
-      </div>
-      <p className="architecture-note">{t.automation}</p>
-    </details>
+      <p className="architecture-note">{path === 'direct' ? t.directNote : t.etlNote}</p>
+      <ol className="architecture-flow">
+        {steps.map((step, index) => <li key={step.title}><button type="button" className={index === selected ? 'selected' : ''} aria-pressed={index === selected} aria-controls={panelId} onClick={() => setSelected(index)}><span>{index + 1}</span>{step.title}</button></li>)}
+      </ol>
+      <div id={panelId} className="architecture-inspector" role="region" aria-label={t[path]} aria-live="polite"><h3>{steps[selected].title}</h3><p>{steps[selected].text}</p></div>
+      <p className="architecture-note">{t.orchestration}</p>
+      <aside className="ssrs-capability"><h3>{t.automationTitle}</h3><p>{t.automation}</p></aside>
+    </section>
   )
 }
