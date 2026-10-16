@@ -20,3 +20,5 @@ The included `.github/workflows/deploy.yml` builds on pushes to `main` or manual
 The user site uses the root path `/`; no repository subpath is needed. Review and merge the prepared branch into `main` to trigger publication. The approved portfolio has been published to main and GitHub Pages. Subsequent approved changes are validated before publication.
 
 - User-confirmed SSRS experience: reverse engineering of subscription XML to implement fully automatic dynamic report distribution, using SQL tables or business actions to determine recipients without manual subscription changes; SQL Server Agent and stored procedures for process automation. No actual XML, table names, recipient data or internal configuration is published.
+
+- Interactive BI demo: 432 deterministic synthetic single-line orders for 2024–2025. USD values are stored in integer cents. This web demo is not an Arium system or embedded Power BI. Filters and bilingual search share one selection function; prior-quarter/year comparison uses the same selection criteria. No external data or production configuration is used.

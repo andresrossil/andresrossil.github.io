@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { career } from './career'
 import BIArchitecture from './BIArchitecture'
+import BIDemo from './BIDemo'
 
 const currentYear = new Date().getFullYear()
 
@@ -123,7 +124,7 @@ const projectRoutes = ['corporate-bi-platform', 'warehouse-operations', 'sap-bus
 function App() {
   const [language, setLanguage] = useState<Language>('EN')
   const [hash, setHash] = useState(() => window.location.hash)
-  const caseIndex = projectRoutes.findIndex(route => hash === `#/projects/${route}`)
+  const caseIndex = projectRoutes.findIndex(route => hash.split('?')[0] === `#/projects/${route}`)
   const t = translations[language]
 
   const background = career[language]
@@ -143,7 +144,11 @@ function App() {
 
   useEffect(() => {
     if (caseIndex >= 0) {
-      window.scrollTo({ top: 0, behavior: 'instant' })
+      if (hash.endsWith('?demo')) {
+        const frame = requestAnimationFrame(() => document.getElementById('interactive-bi-demo')?.scrollIntoView({ behavior: 'instant' }))
+        return () => cancelAnimationFrame(frame)
+      }
+      else window.scrollTo({ top: 0, behavior: 'instant' })
     } else if (hash.startsWith('#') && !hash.startsWith('#/')) {
       document.getElementById(hash.slice(1))?.scrollIntoView()
     }
@@ -166,12 +171,13 @@ function App() {
           <h1>{project.title}</h1>
           <p className="section-description">{project.description}</p>
           <strong className="case-highlight">{caseStudy.highlight}</strong>
+          {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?demo">{language === 'EN' ? 'View interactive BI demo' : 'Ver demostración interactiva de BI'} ↓</a></p>}
           <dl className="case-overview">
             <div><dt>{background.objective}</dt><dd>{caseStudy.objective}</dd></div>
             <div><dt>{background.solution}</dt><dd>{caseStudy.solution}</dd></div>
             <div><dt>{background.result}</dt><dd>{caseStudy.result}</dd></div>
           </dl>
-          {caseIndex === 0 && <BIArchitecture language={language} />}
+          {caseIndex === 0 && <><BIArchitecture language={language} /><BIDemo language={language} /></>}
           <div className="project-technologies">{project.technologies.map(tech => <span key={tech}>{tech}</span>)}</div>
           <a className="secondary contact-button" href="#proyectos">← {language === 'EN' ? 'Back to projects' : 'Volver a proyectos'}</a>
         </section>
