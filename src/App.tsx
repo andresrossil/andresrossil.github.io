@@ -140,7 +140,7 @@ function App() {
           <a href="#proyectos">{t.nav[1]}</a>
           <a href="#contacto">{t.nav[2]}</a>
 
-         
+
 <div className="language-switch" role="group" aria-label="Language / Idioma">
   <button
     type="button"
