@@ -259,14 +259,21 @@ function App() {
 
               <h3>{project.title}</h3>
 
+              <strong className="case-highlight">{background.cases[index].highlight}</strong>
+
               <p>{project.description}</p>
 
-              <dl className="case-details">
-                <dt>{background.solution}</dt>
-                <dd>{background.cases[index].solution}</dd>
-                <dt>{background.result}</dt>
-                <dd>{background.cases[index].result}</dd>
-              </dl>
+              <details className="case-study" key={language}>
+                <summary>{background.readCase}<span className="sr-only">: {project.title}</span></summary>
+                <dl className="case-details">
+                  <dt>{background.objective}</dt>
+                  <dd>{background.cases[index].objective}</dd>
+                  <dt>{background.solution}</dt>
+                  <dd>{background.cases[index].solution}</dd>
+                  <dt>{background.result}</dt>
+                  <dd>{background.cases[index].result}</dd>
+                </dl>
+              </details>
 
               <div className="project-technologies">
                 {project.technologies.map(tech => (
