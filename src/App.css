@@ -206,8 +206,9 @@ button {
 }
 
 .decoration-circle {
-  width: 240px;
-  height: 240px;
+  width: 280px;
+  height: 280px;
+  overflow: hidden;
   border-radius: 50%;
   border: 1.5px solid var(--accent);
   background: radial-gradient(
@@ -222,11 +223,11 @@ button {
   box-shadow: 0 0 50px var(--accent-soft);
 }
 
-.decoration-circle span {
-  font-size: 75px;
-  font-weight: 800;
-  color: var(--accent);
-  letter-spacing: -5px;
+.decoration-circle img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* STATISTICS */
@@ -416,8 +417,18 @@ footer h2 {
 /* RESPONSIVE */
 
 @media (max-width: 1000px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .hero-decoration {
-    display: none;
+    order: -1;
+  }
+
+  .decoration-circle {
+    width: 200px;
+    height: 200px;
   }
 
   .projects {

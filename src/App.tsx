@@ -192,9 +192,9 @@ function App() {
           </div>
         </div>
 
-        <div className="hero-decoration" aria-hidden="true">
+        <div className="hero-decoration">
           <div className="decoration-circle">
-            <span>AR</span>
+            <img src="/andres-rossil.png" alt="Andrés Rossil" width="800" height="800" fetchPriority="high" />
           </div>
         </div>
       </section>
