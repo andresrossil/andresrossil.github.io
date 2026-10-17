@@ -4,6 +4,7 @@ import './App.css'
 import { career } from './career'
 import BIArchitecture from './BIArchitecture'
 import BIDemo from './BIDemo'
+import WarehouseDemo from './WarehouseDemo'
 
 const currentYear = new Date().getFullYear()
 
@@ -144,8 +145,8 @@ function App() {
 
   useEffect(() => {
     if (caseIndex >= 0) {
-      if (hash.endsWith('?demo')) {
-        const frame = requestAnimationFrame(() => document.getElementById('interactive-bi-demo')?.scrollIntoView({ behavior: 'instant' }))
+      if (hash.endsWith('?demo') || hash.endsWith('?warehouse')) {
+        const frame = requestAnimationFrame(() => document.getElementById(hash.endsWith('?warehouse') ? 'warehouse-operations-demo' : 'interactive-bi-demo')?.scrollIntoView({ behavior: 'instant' }))
         return () => cancelAnimationFrame(frame)
       }
       else window.scrollTo({ top: 0, behavior: 'instant' })
@@ -172,12 +173,13 @@ function App() {
           <p className="section-description">{project.description}</p>
           <strong className="case-highlight">{caseStudy.highlight}</strong>
           {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?demo">{language === 'EN' ? 'View interactive BI demo' : 'Ver demostración interactiva de BI'} ↓</a></p>}
+          {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?warehouse">{language === 'EN' ? 'View Warehouse Operations Analytics' : 'Ver analítica de operaciones de almacén'} ↓</a></p>}
           <dl className="case-overview">
             <div><dt>{background.objective}</dt><dd>{caseStudy.objective}</dd></div>
             <div><dt>{background.solution}</dt><dd>{caseStudy.solution}</dd></div>
             <div><dt>{background.result}</dt><dd>{caseStudy.result}</dd></div>
           </dl>
-          {caseIndex === 0 && <><BIArchitecture language={language} /><BIDemo language={language} /></>}
+          {caseIndex === 0 && <><BIArchitecture language={language} /><BIDemo language={language} /><WarehouseDemo language={language} /></>}
           <div className="project-technologies">{project.technologies.map(tech => <span key={tech}>{tech}</span>)}</div>
           <a className="secondary contact-button" href="#proyectos">← {language === 'EN' ? 'Back to projects' : 'Volver a proyectos'}</a>
         </section>

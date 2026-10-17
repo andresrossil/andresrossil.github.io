@@ -636,3 +636,13 @@ footer h2 {
   .demo-kpis strong { font-size: 21px; }
   .demo-chart { padding: 14px; }
 }
+.warehouse-views { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
+.warehouse-views .language-btn { border: 1px solid var(--border-color); font-size: 15px; line-height: 1.5; padding: 12px; background: var(--bg-card); }
+.warehouse-views .active { color: white; background: var(--accent); }
+.warehouse-filters { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.warehouse-demo .demo-kpis { margin-top: 24px; }
+.warehouse-distributions { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.warehouse-shortage > div { opacity: .55; }
+.warehouse-picker-chart { margin-top: 24px; }
+@media(max-width:700px) { .warehouse-filters { grid-template-columns: repeat(2,minmax(0,1fr)); } .warehouse-distributions { grid-template-columns: 1fr; } }
+@media(max-width:500px) { .warehouse-filters { grid-template-columns: 1fr; } }
