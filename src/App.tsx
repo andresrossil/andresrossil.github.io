@@ -1,10 +1,12 @@
 
-import { useEffect, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import './App.css'
 import { career } from './career'
 import BIArchitecture from './BIArchitecture'
 import BIDemo from './BIDemo'
 import WarehouseDemo from './WarehouseDemo'
+import EnterpriseDemo from './EnterpriseDemo'
+import { appReducer, initialAppState } from './enterpriseData'
 
 const currentYear = new Date().getFullYear()
 
@@ -38,9 +40,9 @@ const translations = {
       },
       {
         category: 'BUSINESS APPLICATIONS',
-        title: 'Warehouse Operations Applications',
+        title: 'Warehouse & Distribution Solutions',
         description:
-          'Power Apps applications supporting physical inventory counts, warehouse picking and operational workflows.',
+          'Independent business applications originally developed in Power Apps for warehouse operations and fleet and delivery management, sharing operational information.',
         technologies: ['Power Apps', 'Inventory', 'Automation'],
       },
       {
@@ -85,9 +87,9 @@ const translations = {
       },
       {
         category: 'APLICACIONES EMPRESARIALES',
-        title: 'Aplicaciones para operaciones de almacén',
+        title: 'Soluciones de almacén y distribución',
         description:
-          'Aplicaciones Power Apps para conteos físicos, picking de almacén y procesos operativos.',
+          'Aplicaciones empresariales independientes desarrolladas originalmente en Power Apps para operaciones de almacén y gestión de flota y entregas, con información operativa compartida.',
         technologies: ['Power Apps', 'Inventarios', 'Automatización'],
       },
       {
@@ -123,9 +125,11 @@ const skills = [
 const projectRoutes = ['corporate-bi-platform', 'warehouse-operations', 'sap-business-one']
 
 function App() {
+  const [enterpriseState, enterpriseDispatch] = useReducer(appReducer, undefined, initialAppState)
   const [language, setLanguage] = useState<Language>('EN')
   const [hash, setHash] = useState(() => window.location.hash)
   const caseIndex = projectRoutes.findIndex(route => hash.split('?')[0] === `#/projects/${route}`)
+  const enterpriseMode = caseIndex === 1 ? (hash.endsWith('?warehouseapp') ? 'warehouse' : hash.endsWith('?fleetapp') ? 'fleet' : null) : null
   const t = translations[language]
 
   const background = career[language]
@@ -174,12 +178,15 @@ function App() {
           <strong className="case-highlight">{caseStudy.highlight}</strong>
           {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?demo">{language === 'EN' ? 'View interactive BI demo' : 'Ver demostración interactiva de BI'} ↓</a></p>}
           {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?warehouse">{language === 'EN' ? 'View Warehouse Operations Analytics' : 'Ver analítica de operaciones de almacén'} ↓</a></p>}
+          {caseIndex === 1 && <div className="enterprise-links"><a className="secondary contact-button" href="#/projects/warehouse-operations?warehouseapp">Warehouse Operations →</a><a className="secondary contact-button" href="#/projects/warehouse-operations?fleetapp">Fleet & Delivery Management →</a></div>}
+          {enterpriseMode ? <EnterpriseDemo key={enterpriseMode} mode={enterpriseMode} language={language} state={enterpriseState} dispatch={enterpriseDispatch} /> : <>
           <dl className="case-overview">
             <div><dt>{background.objective}</dt><dd>{caseStudy.objective}</dd></div>
             <div><dt>{background.solution}</dt><dd>{caseStudy.solution}</dd></div>
             <div><dt>{background.result}</dt><dd>{caseStudy.result}</dd></div>
           </dl>
           {caseIndex === 0 && <><BIArchitecture language={language} /><BIDemo language={language} /><WarehouseDemo language={language} /></>}
+          </>}
           <div className="project-technologies">{project.technologies.map(tech => <span key={tech}>{tech}</span>)}</div>
           <a className="secondary contact-button" href="#proyectos">← {language === 'EN' ? 'Back to projects' : 'Volver a proyectos'}</a>
         </section>
