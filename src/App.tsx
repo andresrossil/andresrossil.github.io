@@ -341,7 +341,6 @@ function App() {
             </article>
           ))}
         </div>
-        <p className="section-description case-note">{background.note}</p>
       </section>
 
       <footer id="contacto">
