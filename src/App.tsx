@@ -164,7 +164,7 @@ function App() {
     return (
       <main className={`portfolio project-page ${caseIndex === 0 ? 'bi-project' : ''}`}>
         <nav className="navbar">
-          <a className="logo" href="#inicio">AR<span>.</span></a>
+          <a className="logo" href="#inicio">AR</a>
           <div className="language-switch" role="group" aria-label="Language / Idioma">
             {(['ES', 'EN'] as const).map(option => <button key={option} type="button" className={`language-btn ${language === option ? 'active' : ''}`} aria-pressed={language === option} onClick={() => setLanguage(option)}>{option}</button>)}
           </div>
@@ -196,7 +196,7 @@ function App() {
     <main className="portfolio">
       <nav className="navbar">
         <a className="logo" href="#inicio">
-          AR<span>.</span>
+          AR
         </a>
 
         <div className="nav-links">
@@ -233,7 +233,7 @@ function App() {
           <p className="eyebrow">{t.eyebrow}</p>
 
           <h1>
-            Andrés <span>Rossil.</span>
+            Andrés <span>Rossil</span>
           </h1>
 
           <h2>{t.role}</h2>

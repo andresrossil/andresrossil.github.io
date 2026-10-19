@@ -737,3 +737,19 @@ footer h2 {
  .warehouse-app-header { padding:10px 15px; height:auto; min-height:66px; gap:12px; }
  .warehouse-app-header > a { padding:9px 11px; font-size:12px; }
 }
+
+/* Shared button standard for existing and future controls */
+body :is(.portfolio, .warehouse-app) button,
+body a:is(.primary, .secondary, .back-projects, .case-link),
+body .nav-links > a, body .enterprise-links a, body .warehouse-app-header > a {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px #233d5914, 0 0 0 1px #233d5909;
+}
+body :is(.portfolio, .warehouse-app) button:not(:disabled):hover,
+body a:is(.primary, .secondary, .back-projects, .case-link):hover,
+body .nav-links > a:hover, body .enterprise-links a:hover, body .warehouse-app-header > a:hover {
+  box-shadow: 0 3px 8px #233d5924, 0 0 0 1px #233d5912;
+}
+body .actions a, body a.contact-button { display: inline-flex; gap: 8px; }
