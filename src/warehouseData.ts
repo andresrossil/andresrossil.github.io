@@ -18,7 +18,7 @@ for (let month = 1; month <= 3; month++) {
     }
   }
 }
-export type WarehouseFilters = { month: string; picker: string; product: string; brand: string; supplier: string; search: string }
+export type WarehouseFilters = { month: string; picker: string; product: string; brand: string; supplier: string; search: string; start?: string; end?: string }
 export function productFor(id: string) {
   const product = warehouseProducts.find(item => item.id === id)
   if (!product) throw new Error(`Unknown synthetic product: ${id}`)
@@ -28,7 +28,8 @@ export function warehouseSelect(lines: WarehouseLine[], filters: WarehouseFilter
   const query = filters.search.trim().toLowerCase()
   return lines.filter(line => {
     const product = productFor(line.product)
-    return (filters.month === 'all' || line.date.slice(5, 7) === filters.month)
+    return (!filters.start || line.date >= filters.start) && (!filters.end || line.date <= filters.end)
+      && (filters.month === 'all' || line.date.slice(5, 7) === filters.month)
       && (filters.picker === 'all' || line.picker === filters.picker)
       && (filters.product === 'all' || line.product === filters.product)
       && (filters.brand === 'all' || product.brand === filters.brand)

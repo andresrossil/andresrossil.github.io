@@ -3,7 +3,6 @@ import { useEffect, useReducer, useState } from 'react'
 import './App.css'
 import { career } from './career'
 import BIArchitecture from './BIArchitecture'
-import BIDemo from './BIDemo'
 import WarehouseDemo from './WarehouseDemo'
 import EnterpriseDemo from './EnterpriseDemo'
 import { appReducer, initialAppState } from './enterpriseData'
@@ -149,15 +148,15 @@ function App() {
 
   useEffect(() => {
     if (caseIndex >= 0) {
-      if (hash.endsWith('?demo') || hash.endsWith('?warehouse')) {
-        const frame = requestAnimationFrame(() => document.getElementById(hash.endsWith('?warehouse') ? 'warehouse-operations-demo' : 'interactive-bi-demo')?.scrollIntoView({ behavior: 'instant' }))
-        return () => cancelAnimationFrame(frame)
-      }
-      else window.scrollTo({ top: 0, behavior: 'instant' })
+      window.scrollTo({ top: 0, behavior: 'instant' })
     } else if (hash.startsWith('#') && !hash.startsWith('#/')) {
       document.getElementById(hash.slice(1))?.scrollIntoView()
     }
   }, [hash, caseIndex])
+
+  if (caseIndex === 0 && (hash.endsWith('?warehouse') || hash.endsWith('?demo'))) {
+    return <main className="warehouse-app"><header className="warehouse-app-header"><a href="#/projects/corporate-bi-platform">← {language === 'EN' ? 'Back to case study' : 'Volver al caso'}</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></header><WarehouseDemo language={language}/></main>
+  }
 
   if (caseIndex >= 0) {
     const project = t.projects[caseIndex]
@@ -176,7 +175,6 @@ function App() {
           <h1>{project.title}</h1>
           <p className="section-description">{project.description}</p>
           <strong className="case-highlight">{caseStudy.highlight}</strong>
-          {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?demo">{language === 'EN' ? 'View interactive BI demo' : 'Ver demostración interactiva de BI'} ↓</a></p>}
           {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?warehouse">{language === 'EN' ? 'View Warehouse Operations Analytics' : 'Ver analítica de operaciones de almacén'} ↓</a></p>}
           {caseIndex === 1 && <div className="enterprise-links"><a className="secondary contact-button" href="#/projects/warehouse-operations?warehouseapp">Warehouse Operations →</a><a className="secondary contact-button" href="#/projects/warehouse-operations?fleetapp">Fleet & Delivery Management →</a></div>}
           {enterpriseMode ? <EnterpriseDemo key={enterpriseMode} mode={enterpriseMode} language={language} state={enterpriseState} dispatch={enterpriseDispatch} /> : <>
@@ -185,7 +183,7 @@ function App() {
             <div><dt>{background.solution}</dt><dd>{caseStudy.solution}</dd></div>
             <div><dt>{background.result}</dt><dd>{caseStudy.result}</dd></div>
           </dl>
-          {caseIndex === 0 && <><BIArchitecture language={language} /><BIDemo language={language} /><WarehouseDemo language={language} /></>}
+          {caseIndex === 0 && <><BIArchitecture language={language} /></>}
           </>}
           <div className="project-technologies">{project.technologies.map(tech => <span key={tech}>{tech}</span>)}</div>
           <a className="secondary contact-button" href="#proyectos">← {language === 'EN' ? 'Back to projects' : 'Volver a proyectos'}</a>

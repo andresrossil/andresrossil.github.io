@@ -30,3 +30,12 @@ test('all filter combinations reconcile groups and protect zero denominators',()
  assert.equal(warehouseSelect(warehouseLines,{...all,search:'WH-1-001'}).length,3)
  assert.ok(warehouseSelect(warehouseLines,{...all,product:'SKU-01'}).every(l=>l.product==='SKU-01'))
 })
+
+test('inclusive date filters and invalid ranges preserve quantities and unique document counts',()=>{
+ const rows=warehouseSelect(warehouseLines,{...all,start:'2025-01-01',end:'2025-01-05'})
+ assert.equal(rows.length,15);assert.equal(warehouseSummary(rows).documents,5)
+ assert.equal(warehouseSelect(warehouseLines,{...all,start:'2025-03-31',end:'2025-01-01'}).length,0)
+ const slice=warehouseSelect(warehouseLines,{...all,start:'2025-02-01',end:'2025-02-20',picker:'P-1',brand:'A'})
+ assert.ok(slice.every(r=>r.date>='2025-02-01'&&r.date<='2025-02-20'&&r.picker==='P-1'&&warehouseProducts.find(p=>p.id===r.product).brand==='A'))
+ const sum=warehouseSummary(slice);assert.equal(sum.missing,sum.requested-sum.fulfilled)
+})
