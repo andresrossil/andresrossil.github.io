@@ -32,3 +32,5 @@ The user site uses the root path `/`; no repository subpath is needed. Review an
 - Visual UI standard: dashboards keep concise titles, metrics, filters and chart labels. Repeated synthetic-data badges and formula/denominator explanations are removed from the dashboard UI at the user’s request; underlying data, calculations and tests are unchanged. Do not add repetitive data notices in future dashboards. Conceptual architecture context and functional simulation controls remain separate from dashboard chrome.
 
 - Button standard: center text and contents on existing and future buttons, including navigation links styled as buttons. Use restrained border shadows for visible contours. Display the brand as AR and Andrés Rossil, without trailing periods.
+
+- At user request, Warehouse Operations and Fleet & Delivery Management application simulations, entry buttons and simulation source/tests are removed. Their historical case description remains. Future interactive applications will follow images supplied by the user. Warehouse Operations Analytics dashboard is retained. Old application links fall back to the case overview.
