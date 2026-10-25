@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import './App.css'
+import { homeProjects } from './homeProjects'
 import { career } from './career'
 import BIArchitecture from './BIArchitecture'
 import WarehouseDemo from './WarehouseDemo'
@@ -13,7 +14,7 @@ type Language = 'EN' | 'ES'
 
 const translations = {
   EN: {
-    nav: ['Experience', 'Projects', 'Contact'],
+    nav: ['Projects', 'Experience', 'Contact'],
     eyebrow: 'BUSINESS INTELLIGENCE & ERP SOLUTIONS',
     role: 'Senior BI & ERP Consultant',
     intro:
@@ -60,7 +61,7 @@ const translations = {
     footer: 'Professional Portfolio',
   },
   ES: {
-    nav: ['Experiencia', 'Proyectos', 'Contacto'],
+    nav: ['Proyectos', 'Experiencia', 'Contacto'],
     eyebrow: 'INTELIGENCIA DE NEGOCIOS Y SOLUCIONES ERP',
     role: 'Consultor Senior de BI y ERP',
     intro:
@@ -204,8 +205,8 @@ function App() {
         </a>
 
         <div className="nav-links">
-          <a href="#experiencia">{t.nav[0]}</a>
-          <a href="#proyectos">{t.nav[1]}</a>
+          <a href="#proyectos">{t.nav[0]}</a>
+          <a href="#experiencia">{t.nav[1]}</a>
           <a href="#contacto">{t.nav[2]}</a>
 
 
@@ -245,6 +246,8 @@ function App() {
           <p className="description">{t.intro}</p>
 
           <div className="actions">
+            <a className="primary" href="mailto:nestorrossil@hotmail.com">{language==='ES'?'Contactar':'Contact'} →</a>
+            <a className="secondary" href="/andres-rossil-cv-es.pdf" download>{language==='ES'?'Descargar CV':'Download CV · Spanish'} ↓</a>
             <a className="primary" href="#proyectos">
               {t.explore} <span aria-hidden="true">→</span>
             </a>
@@ -284,6 +287,44 @@ function App() {
         </div>
       </section>
 
+      <section className="content projects-section" id="proyectos">
+        <p className="eyebrow">{t.projectsLabel}</p>
+
+        <h2>{t.projectsTitle}</h2>
+
+        <div className="projects">
+          {t.projects.map((project, index) => (
+            <article className="project-card" key={project.title}>
+              <span className="project-category">
+                {String(index + 1).padStart(2, '0')}
+                {' / '}
+                {project.category}
+              </span>
+
+              <h3>{homeProjects[language][index].title}</h3>
+
+              <p className="project-subtitle">{homeProjects[language][index].subtitle}</p>
+              <strong className="case-highlight">{homeProjects[language][index].highlight}</strong>
+              <dl className="home-project-scope">
+                <div><dt>{language==='ES'?'Alcance':'Scope'}</dt><dd>{homeProjects[language][index].scope}</dd></div>
+                <div><dt>{language==='ES'?'Mi responsabilidad':'My responsibility'}</dt><dd>{homeProjects[language][index].role}</dd></div>
+                <div><dt>{language==='ES'?'Procesos empresariales':'Business processes'}</dt><dd>{homeProjects[language][index].processes}</dd></div>
+              </dl>
+
+              <a className="case-link" href={`#/projects/${projectRoutes[index]}`}>
+                {background.readCase} <span aria-hidden="true">→</span>
+              </a>
+
+              <div className="project-technologies">
+                {project.technologies.map(tech => (
+                  <span key={tech}>{tech}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="content experience" id="experiencia">
         <p className="eyebrow">{t.experienceLabel}</p>
 
@@ -308,41 +349,7 @@ function App() {
 
         <div className="tags">
           {skills.map(skill => (
-            <span key={skill}>{skill}</span>
-          ))}
-        </div>
-      </section>
-
-      <section className="content projects-section" id="proyectos">
-        <p className="eyebrow">{t.projectsLabel}</p>
-
-        <h2>{t.projectsTitle}</h2>
-
-        <div className="projects">
-          {t.projects.map((project, index) => (
-            <article className="project-card" key={project.title}>
-              <span className="project-category">
-                {String(index + 1).padStart(2, '0')}
-                {' / '}
-                {project.category}
-              </span>
-
-              <h3>{project.title}</h3>
-
-              <strong className="case-highlight">{background.cases[index].highlight}</strong>
-
-              <p>{project.description}</p>
-
-              <a className="case-link" href={`#/projects/${projectRoutes[index]}`}>
-                {background.readCase} <span aria-hidden="true">→</span>
-              </a>
-
-              <div className="project-technologies">
-                {project.technologies.map(tech => (
-                  <span key={tech}>{tech}</span>
-                ))}
-              </div>
-            </article>
+            <span key={skill}>{language==='ES' && skill==='Data Modeling'?'Modelado de datos':language==='ES' && skill==='ETL / ELT'?'Integración de datos · ETL / ELT':skill}</span>
           ))}
         </div>
       </section>

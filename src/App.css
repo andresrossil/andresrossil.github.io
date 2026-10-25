@@ -760,3 +760,33 @@ body .actions a, body a.contact-button { display: inline-flex; gap: 8px; }
 .cts-chart-toolbar { margin:0 0 20px; }
 .cts-chart-toolbar label,.cts-search { display:grid; gap:8px; font-size:13px; color:var(--text-secondary); max-width:320px; margin-bottom:16px; }
 .cts-chart-toolbar select,.cts-search input { font:inherit; font-size:15px; padding:10px; border:1px solid var(--border-color); border-radius:6px; color:var(--text-primary); background:white; min-width:0; }
+
+/* Homepage summaries and narrow-screen layout. */
+.projects-section .project-card{min-width:0}
+.project-card .project-subtitle{font-size:14px;line-height:1.6;flex-grow:0;margin:0 0 18px}
+.home-project-scope{margin:18px 0 24px;display:grid;gap:18px;flex:1}
+.home-project-scope dt{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px}
+.home-project-scope dd{font-size:14px;line-height:1.75;color:var(--text-secondary);margin:0}
+.project-card .case-link{align-self:flex-start;margin-top:auto}
+.hero-content,.nav-links,.stat-item{min-width:0}
+@media(max-width:360px){
+ .navbar{align-items:flex-start;gap:10px}
+ .nav-links{gap:8px;max-width:calc(100% - 43px)}
+ .nav-links>a{padding:7px 9px}
+ .hero{gap:28px;padding-top:36px}
+ .hero-content{width:100%}
+ .hero h1{font-size:46px;letter-spacing:-2px}
+ .hero h2{font-size:20px;overflow-wrap:anywhere}
+ .hero .eyebrow{letter-spacing:1.5px;line-height:1.8}
+ .actions{display:grid;grid-template-columns:minmax(0,1fr);width:100%;gap:10px}
+ .actions a{padding:14px 12px;overflow-wrap:anywhere}
+ .decoration-circle{max-width:100%;width:180px;height:180px}
+ .stats{gap:22px;flex-wrap:wrap}
+ .stat-item{min-width:0;flex:1 1 100px}
+ .project-card{padding:22px}
+ .project-card h3{font-size:21px;overflow-wrap:anywhere}
+ .project-technologies span,.tags span{max-width:100%;overflow-wrap:anywhere}
+ .contact-actions{flex-wrap:wrap}
+ .contact-actions a{max-width:100%;padding:14px 18px}
+ .footer-bottom{font-size:11px;text-align:center}
+}
