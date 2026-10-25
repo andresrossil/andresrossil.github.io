@@ -7,12 +7,11 @@ const content = {
   eyebrow: 'BUSINESS APPLICATIONS · CASE STUDY', back: 'Back to projects',
   intro: 'Four independent Power Apps applications supporting warehouse execution, inventory and route auditing, transport expenses, and delivery settlement through shared operational information in SQL Server.',
   roleTitle: 'My responsibilities',
-  role: 'I developed the Power Apps applications and the SQL Server layer. I defined the integration requirements for APIs implemented by third-party developers. Roadnet was the external route-planning system.',
+  role: 'I developed the Power Apps applications and the SQL Server layer. I defined the integration requirements for APIs implemented by third-party developers.',
   architecture: 'Shared architecture', architectureNote: 'Conceptual view of the confirmed components and responsibilities; connections do not describe specific endpoints or imply direct database access to SAP.',
   sql: 'Shared SQL Server layer', sqlText: 'Operational information shared across the four applications. Database development and application logic were part of my responsibilities.',
   api: 'Integration APIs', apiText: 'Developed by third parties under integration requirements that I defined.',
   sap: 'SAP Business One', sapText: 'ERP integration within the operational workflow.',
-  roadnet: 'Roadnet', roadnetText: 'External route planning; separate from the applications I developed.',
   flow: 'Operational workflow', steps: ['Warehouse execution', 'Review and correction', 'Route execution', 'Returns and settlement'],
   expenseFlow: 'Transport expense requests and authorizations support the logistics operation as a separate workflow.',
   gallery: 'Application screens', imageNote: 'Warehouse is presented as a visual recreation with fictional data. Other application screens are from the original development environment. Empty fields and editor indicators are retained. The approval screen is a redacted derivative; these images do not demonstrate live system execution.',
@@ -30,12 +29,11 @@ const content = {
   eyebrow: 'APLICACIONES EMPRESARIALES · CASO DE ESTUDIO', back: 'Volver a proyectos',
   intro: 'Cuatro aplicaciones independientes en Power Apps para ejecución de almacén, auditoría de inventario y rutas, gastos de transporte y liquidación de entregas, con información operativa compartida en SQL Server.',
   roleTitle: 'Mi participación',
-  role: 'Desarrollé las aplicaciones Power Apps y la capa SQL Server. Definí los requerimientos de integración para las API programadas por desarrolladores externos. Roadnet era el sistema externo de planificación de rutas.',
+  role: 'Desarrollé las aplicaciones Power Apps y la capa SQL Server. Definí los requerimientos de integración para las API programadas por desarrolladores externos.',
   architecture: 'Arquitectura compartida', architectureNote: 'Vista conceptual de los componentes y responsabilidades confirmados; las conexiones no describen endpoints específicos ni implican acceso directo a la base de SAP.',
   sql: 'Capa compartida SQL Server', sqlText: 'Información operativa compartida por las cuatro aplicaciones. El desarrollo de base de datos y la lógica de las aplicaciones formaron parte de mis responsabilidades.',
   api: 'API de integración', apiText: 'Programadas por terceros bajo los requerimientos de integración que definí.',
   sap: 'SAP Business One', sapText: 'Integración ERP dentro del flujo operativo.',
-  roadnet: 'Roadnet', roadnetText: 'Planificación externa de rutas, separada de las aplicaciones que desarrollé.',
   flow: 'Flujo operativo', steps: ['Ejecución de almacén', 'Revisión y corrección', 'Ejecución de ruta', 'Devoluciones y liquidación'],
   expenseFlow: 'Las solicitudes y autorizaciones de gastos de transporte apoyan la operación logística mediante un flujo independiente.',
   gallery: 'Pantallas de las aplicaciones', imageNote: 'Warehouse se presenta como recreación visual con datos ficticios. Las demás capturas corresponden al entorno de desarrollo original. Se conservan los campos vacíos e indicadores del editor. La autorización es una copia anonimizada; las imágenes no demuestran una ejecución del sistema en producción.',
@@ -56,7 +54,7 @@ export default function LogisticsCase({language}:{language:'EN'|'ES'}) {
   <a className="back-projects" href="#proyectos">← {t.back}</a>
   <p className="eyebrow">{t.eyebrow}</p><h1>Integrated Logistics Operations Suite</h1>
   <p className="section-description">{t.intro}</p>
-  <div className="project-technologies">{['Power Apps','SQL Server','SAP Business One','APIs','Roadnet'].map(x=><span key={x}>{x}</span>)}</div>
+  <div className="project-technologies">{['Power Apps','SQL Server','SAP Business One','APIs'].map(x=><span key={x}>{x}</span>)}</div>
   <nav className="ilos-nav" aria-label={t.gallery}>{t.apps.map(a=><a href={`#ilos-${a.id}`} key={a.id} onClick={e=>{e.preventDefault();document.getElementById(`ilos-${a.id}`)?.scrollIntoView({behavior:'smooth'})}}>{a.title}</a>)}</nav>
   <section className="ilos-role"><h2>{t.roleTitle}</h2><p>{t.role}</p></section>
   <section aria-labelledby="ilos-architecture"><h2 id="ilos-architecture">{t.architecture}</h2><p>{t.architectureNote}</p>
@@ -64,7 +62,7 @@ export default function LogisticsCase({language}:{language:'EN'|'ES'}) {
    <div className="ilos-connector" aria-hidden="true">↕</div>
    <div className="ilos-sql"><h3>{t.sql}</h3><p>{t.sqlText}</p></div>
    <div className="ilos-connector" aria-hidden="true">↕</div>
-   <div className="ilos-integration"><div><h3>{t.api}</h3><p>{t.apiText}</p></div><div><h3>{t.sap}</h3><p>{t.sapText}</p></div><div><h3>{t.roadnet}</h3><p>{t.roadnetText}</p></div></div>
+   <div className="ilos-integration"><div><h3>{t.api}</h3><p>{t.apiText}</p></div><div><h3>{t.sap}</h3><p>{t.sapText}</p></div></div>
   </section>
   <section><h2>{t.flow}</h2><ol className="ilos-flow">{t.steps.map(s=><li key={s}>{s}</li>)}</ol><p>{t.expenseFlow}</p></section>
   <section><h2>{t.gallery}</h2></section>
