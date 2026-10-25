@@ -4,6 +4,7 @@ import './App.css'
 import { homeProjects } from './homeProjects'
 import { career } from './career'
 import BIArchitecture from './BIArchitecture'
+import BIReportingCapabilities from './BIReportingCapabilities'
 import WarehouseDemo from './WarehouseDemo'
 import CTSDashboard from './CTSDashboard'
 import LogisticsCase from './LogisticsCase'
@@ -45,8 +46,8 @@ const translations = {
         category: 'DATA & ANALYTICS',
         title: 'Corporate BI Platform',
         description:
-          'Corporate BI platform combining SQL Server reporting databases, SSIS data integration, centralized data models and Power BI dashboards.',
-        technologies: ['SQL Server', 'SSIS', 'Power BI', 'SSRS', 'SQL Server Agent'],
+          'Enterprise BI solutions combining SQL Server, data integration, Power BI dashboards, automated SSRS reporting and Excel analytics.',
+        technologies: ['SQL Server', 'SSIS', 'Power BI', 'SSRS', 'Excel', 'SQL Server Agent'],
       },
       {
         category: 'BUSINESS APPLICATIONS',
@@ -101,8 +102,8 @@ const translations = {
         category: 'DATOS Y ANALÍTICA',
         title: 'Plataforma corporativa de BI',
         description:
-          'Plataforma corporativa de BI que integra bases de reportería en SQL Server, procesos de integración con SSIS, modelos de datos centralizados y dashboards en Power BI.',
-        technologies: ['SQL Server', 'SSIS', 'Power BI', 'SSRS', 'SQL Server Agent'],
+          'Soluciones empresariales de BI con SQL Server, integración de datos, dashboards Power BI, reportes SSRS automatizados y análisis en Excel.',
+        technologies: ['SQL Server', 'SSIS', 'Power BI', 'SSRS', 'Excel', 'SQL Server Agent'],
       },
       {
         category: 'APLICACIONES EMPRESARIALES',
@@ -214,10 +215,10 @@ function App() {
           {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?cts">{language === 'EN' ? 'View Cost to Serve' : 'Ver Cost to Serve'}</a></p>}
           <dl className="case-overview">
             <div><dt>{background.objective}</dt><dd>{caseStudy.objective}</dd></div>
-            <div><dt>{background.solution}</dt><dd>{caseStudy.solution}</dd></div>
+            <div><dt>{background.solution}</dt><dd>{caseIndex===0?(language==='ES'?'Comprensión de necesidades de información, preparación de consultas SQL y estructuras de datos, desarrollo de análisis y reportes, y automatización de su distribución. Adaptación de cada solución a las herramientas y accesos disponibles para los usuarios.':'Understanding information needs, preparing SQL queries and data structures, developing analytics and reports, and automating distribution. Adapting each solution to the tools and access available to its users.'):caseStudy.solution}</dd></div>
             <div><dt>{background.result}</dt><dd>{caseStudy.result}</dd></div>
           </dl>
-          {caseIndex === 0 && <><BIArchitecture language={language} /></>}
+          {caseIndex === 0 && <><BIReportingCapabilities language={language}/><BIArchitecture language={language} /></>}
           <div className="project-technologies">{project.technologies.map(tech => <span key={tech}>{tech}</span>)}</div>
           <a className="secondary contact-button" href="#proyectos">{language === 'EN' ? 'Back to projects' : 'Volver a proyectos'}</a>
         </section>
