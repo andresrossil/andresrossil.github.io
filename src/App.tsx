@@ -205,9 +205,7 @@ function App() {
         </a>
 
         <div className="nav-links">
-          <a href="#proyectos">{t.nav[0]}</a>
-          <a href="#experiencia">{t.nav[1]}</a>
-          <a href="#contacto">{t.nav[2]}</a>
+
 
 
 <div className="language-switch" role="group" aria-label="Language / Idioma">
@@ -247,7 +245,6 @@ function App() {
 
           <div className="actions">
             <a className="primary" href="mailto:nestorrossil@hotmail.com">{language==='ES'?'Contactar':'Contact'} →</a>
-            <a className="secondary" href="/andres-rossil-cv-es.pdf" download>{language==='ES'?'Descargar CV':'Download CV · Spanish'} ↓</a>
             <a className="primary" href="#proyectos">
               {t.explore} <span aria-hidden="true">→</span>
             </a>
@@ -259,6 +256,9 @@ function App() {
               rel="noopener noreferrer"
             >
               GitHub ↗
+            </a>
+            <a className="secondary" href="#experiencia" onClick={e=>{e.preventDefault();document.getElementById('experiencia')?.scrollIntoView({behavior:'smooth'})}}>
+              {language==='ES'?'Experiencia':'Experience'} ↓
             </a>
           </div>
         </div>
