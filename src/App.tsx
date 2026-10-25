@@ -8,6 +8,7 @@ import WarehouseDemo from './WarehouseDemo'
 import CTSDashboard from './CTSDashboard'
 import LogisticsCase from './LogisticsCase'
 import DataArchitectureCase from './DataArchitectureCase'
+import SAPCase from './SAPCase'
 
 const currentYear = new Date().getFullYear()
 
@@ -166,6 +167,10 @@ function App() {
 
   if (caseIndex === 1) {
     return <main className="portfolio project-page"><nav className="navbar"><a className="logo" href="#inicio">AR</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></nav><LogisticsCase language={language}/></main>
+  }
+
+  if (caseIndex === 2) {
+    return <main className="portfolio project-page"><nav className="navbar"><a className="logo" href="#inicio">AR</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} type="button" className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></nav><SAPCase language={language}/></main>
   }
 
   if (caseIndex === 3) {
