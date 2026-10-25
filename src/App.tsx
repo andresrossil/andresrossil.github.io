@@ -5,6 +5,7 @@ import { career } from './career'
 import BIArchitecture from './BIArchitecture'
 import WarehouseDemo from './WarehouseDemo'
 import CTSDashboard from './CTSDashboard'
+import LogisticsCase from './LogisticsCase'
 
 const currentYear = new Date().getFullYear()
 
@@ -38,10 +39,10 @@ const translations = {
       },
       {
         category: 'BUSINESS APPLICATIONS',
-        title: 'Warehouse & Distribution Solutions',
+        title: 'Integrated Logistics Operations Suite',
         description:
-          'Independent business applications originally developed in Power Apps for warehouse operations and fleet and delivery management, sharing operational information.',
-        technologies: ['Power Apps', 'Inventory', 'Automation'],
+          'Four Power Apps applications for warehouse operations, auditing, transport expenses and route delivery, supported by shared SQL Server information and SAP Business One integration.',
+        technologies: ['Power Apps', 'SQL Server', 'SAP Business One'],
       },
       {
         category: 'ERP AUTOMATION',
@@ -85,10 +86,10 @@ const translations = {
       },
       {
         category: 'APLICACIONES EMPRESARIALES',
-        title: 'Soluciones de almacén y distribución',
+        title: 'Integrated Logistics Operations Suite',
         description:
-          'Aplicaciones empresariales independientes desarrolladas originalmente en Power Apps para operaciones de almacén y gestión de flota y entregas, con información operativa compartida.',
-        technologies: ['Power Apps', 'Inventarios', 'Automatización'],
+          'Cuatro aplicaciones Power Apps para almacén, auditoría, gastos de transporte y entregas, con información compartida en SQL Server e integración con SAP Business One.',
+        technologies: ['Power Apps', 'SQL Server', 'SAP Business One'],
       },
       {
         category: 'AUTOMATIZACIÓN ERP',
@@ -120,12 +121,12 @@ const skills = [
   'ETL / ELT',
 ]
 
-const projectRoutes = ['corporate-bi-platform', 'warehouse-operations', 'sap-business-one']
+const projectRoutes = ['corporate-bi-platform', 'integrated-logistics-operations-suite', 'sap-business-one']
 
 function App() {
   const [language, setLanguage] = useState<Language>('EN')
   const [hash, setHash] = useState(() => window.location.hash)
-  const caseIndex = projectRoutes.findIndex(route => hash.split('?')[0] === `#/projects/${route}`)
+  const caseIndex = projectRoutes.findIndex(route => hash.split('?')[0] === `#/projects/${route}` || (route === 'integrated-logistics-operations-suite' && hash.split('?')[0] === '#/projects/warehouse-operations'))
   const t = translations[language]
 
   const background = career[language]
@@ -157,6 +158,10 @@ function App() {
 
   if (caseIndex === 0 && (hash.endsWith('?warehouse') || hash.endsWith('?demo'))) {
     return <main className="warehouse-app"><header className="warehouse-app-header"><a href="#/projects/corporate-bi-platform">← {language === 'EN' ? 'Back to case study' : 'Volver al caso'}</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></header><WarehouseDemo language={language}/></main>
+  }
+
+  if (caseIndex === 1) {
+    return <main className="portfolio project-page"><nav className="navbar"><a className="logo" href="#inicio">AR</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></nav><LogisticsCase language={language}/></main>
   }
 
   if (caseIndex >= 0) {
