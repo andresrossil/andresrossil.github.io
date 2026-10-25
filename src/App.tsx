@@ -7,6 +7,7 @@ import BIArchitecture from './BIArchitecture'
 import WarehouseDemo from './WarehouseDemo'
 import CTSDashboard from './CTSDashboard'
 import LogisticsCase from './LogisticsCase'
+import DataArchitectureCase from './DataArchitectureCase'
 
 const currentYear = new Date().getFullYear()
 
@@ -52,6 +53,7 @@ const translations = {
           'SAP Business One extensions using VB.NET, SQL queries, stored procedures, formatted searches and approval procedures.',
         technologies: ['SAP Business One', 'SQL', 'VB.NET'],
       },
+      {category:'DATA ENGINEERING',title:'Enterprise Data Architecture & ETL',description:'Enterprise integration and analytical architecture with SQL Server and SSIS.',technologies:['SQL Server','SSIS','SQL Server Agent','ETL']},
     ],
     contactLabel: 'GET IN TOUCH',
     contactTitle: 'Professional Contact',
@@ -99,6 +101,7 @@ const translations = {
           'Extensiones de SAP Business One mediante VB.NET, consultas SQL, procedimientos almacenados, búsquedas formateadas y procedimientos de aprobación.',
         technologies: ['SAP Business One', 'SQL', 'VB.NET'],
       },
+      {category:'INGENIERÍA DE DATOS',title:'Enterprise Data Architecture & ETL',description:'Integración empresarial y arquitectura analítica con SQL Server y SSIS.',technologies:['SQL Server','SSIS','SQL Server Agent','ETL']},
     ],
     contactLabel: 'CONTACTO',
     contactTitle: 'Contacto profesional',
@@ -122,7 +125,7 @@ const skills = [
   'ETL / ELT',
 ]
 
-const projectRoutes = ['corporate-bi-platform', 'integrated-logistics-operations-suite', 'sap-business-one']
+const projectRoutes = ['corporate-bi-platform', 'integrated-logistics-operations-suite', 'sap-business-one', 'enterprise-data-architecture-etl']
 
 function App() {
   const [language, setLanguage] = useState<Language>('EN')
@@ -163,6 +166,10 @@ function App() {
 
   if (caseIndex === 1) {
     return <main className="portfolio project-page"><nav className="navbar"><a className="logo" href="#inicio">AR</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></nav><LogisticsCase language={language}/></main>
+  }
+
+  if (caseIndex === 3) {
+    return <main className="portfolio project-page"><nav className="navbar"><a className="logo" href="#inicio">AR</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} type="button" className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></nav><DataArchitectureCase language={language}/></main>
   }
 
   if (caseIndex >= 0) {
@@ -292,7 +299,7 @@ function App() {
 
         <h2>{t.projectsTitle}</h2>
 
-        <div className="projects">
+        <div className="projects projects-four">
           {t.projects.map((project, index) => (
             <article className="project-card" key={project.title}>
               <span className="project-category">
