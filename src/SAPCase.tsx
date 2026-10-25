@@ -2,13 +2,20 @@ import './SAPCase.css'
 const copy={
  ES:{
  back:'Volver a proyectos',eyebrow:'SOLUCIONES ERP EMPRESARIALES',
- subtitle:'Personalización del ERP, controles empresariales, automatización e integración de sistemas.',
- intro:'Soluciones desarrolladas principalmente con formularios nativos, tablas personalizadas y lógica SQL para extender los procesos de SAP Business One.',
+ subtitle:'Implementación de ERP, configuración funcional, personalización de procesos e integración empresarial.',
+ intro:'Experiencia técnico-funcional para poner en funcionamiento SAP Business One, adaptar sus procesos y extenderlo cuando la configuración estándar no cubría las necesidades del negocio.',
+ capabilities:['Implementar','Configurar','Extender e integrar'],
+ implementation:'Implementación y administración',
+ implementationCards:[
+ ['Infraestructura e implementación','Preparación de servidores SAP Business One y SQL Server; instalación y configuración de componentes, servicios y acceso web. Implementaciones en empresas y proyectos independientes.'],
+ ['Configuración de empresas y ERP','Aproximadamente diez empresas configuradas desde cero. Parametrización de compras, ventas, inventarios, bancos y contabilidad; series documentales, impuestos, autorizaciones y parámetros operativos según cada empresa.'],
+ ['Configuración financiera y documental','Administración de cuentas de mayor y determinación contable, incluida la configuración por almacén. Conciliación de extractos bancarios; formatos de impresión de cheques y documentos comerciales. Adaptación a facturación electrónica con formatos personalizados y códigos de barras para lectura con escáner.']
+ ],
  blocks:[
  {title:'Gobierno del ERP y controles transaccionales',intro:'Reglas empresariales extendidas dentro del ERP, sin depender de interfaces externas.',cards:[
  ['Accesos y movimientos de inventario','Restricción de almacenes autorizados por usuario y control de productos permitidos por almacén mediante tablas personalizadas.'],
  ['Validaciones de documentos y datos maestros','Controles sobre documentos con valor cero, movimientos de inventario sin costo, estado comercial de datos maestros y restricciones de proveedores.'],
- ['Reglas transaccionales','Validaciones de negocio aplicadas a documentos mediante SBO_SP_TransactionNotification.']
+ ['Reglas transaccionales','Validaciones de negocio aplicadas a documentos mediante SBO_SP_TransactionNotification, incluidas reglas especiales de aplicación de impuestos a determinados productos.']
  ]},
  {title:'Automatización financiera y documental',intro:'Controles financieros y procesamiento de documentos con herramientas de SQL Server.',cards:[
  ['Control presupuestario por centro de costo','Control alternativo que ampliaba las capacidades presupuestarias estándar: validaciones contra gasto, bloqueos configurables y notificaciones de excedentes.'],
@@ -30,17 +37,24 @@ const copy={
  decision:'Prioricé formularios y funcionalidades nativas de SAP Business One para reducir la dependencia de interfaces personalizadas y facilitar el mantenimiento durante las actualizaciones del ERP.',
  diagramNote:'Diagrama conceptual de componentes. Los mecanismos de integración variaban según la solución; el complemento VB.NET correspondía específicamente a manufactura.',
  roleTitle:'Mi participación y tecnologías',
- role:'Diseño de soluciones ERP, personalización de procesos, modelado de tablas y reglas de negocio, integración de sistemas, automatización documental, controles financieros y desarrollo de integraciones especializadas.'
+ role:'Mi participación comenzaba con las necesidades de las áreas de negocio: analizaba los problemas, evaluaba las posibilidades de SAP Business One, proponía alternativas y las implementaba mediante configuración estándar, personalizaciones o integraciones. Este enfoque dio lugar al control presupuestario por centro de costo, la adaptación a facturación electrónica, la integración de consumos reales de materia prima y reglas específicas de impuestos.'
  },
  EN:{
  back:'Back to projects',eyebrow:'ENTERPRISE ERP SOLUTIONS',
- subtitle:'ERP customization, business controls, automation and systems integration.',
- intro:'Solutions developed primarily through native forms, custom tables and SQL logic to extend SAP Business One processes.',
+ subtitle:'ERP deployment, functional configuration, business process customization and enterprise integration.',
+ intro:'Technical and functional experience deploying SAP Business One, adapting its processes and extending it when standard configuration did not meet business needs.',
+ capabilities:['Implement','Configure','Extend & Integrate'],
+ implementation:'Implementation & Administration',
+ implementationCards:[
+ ['Infrastructure & Deployment','Server preparation for SAP Business One and SQL Server; installation and configuration of components, services and web access. Deployment experience in companies and independent projects.'],
+ ['Company Setup & ERP Configuration','Approximately ten companies configured from scratch. Purchasing, sales, inventory, banking and accounting setup; document numbering series, taxes, authorizations and operational parameters tailored to each company.'],
+ ['Financial & Document Configuration','General ledger account administration and account determination, including warehouse-specific settings. Bank statement reconciliation; print layouts for checks and commercial documents. Electronic invoicing adaptation through custom layouts with barcodes for scanner reading.']
+ ],
  blocks:[
  {title:'ERP Governance & Transaction Controls',intro:'Business rules extended within the ERP without reliance on external interfaces.',cards:[
  ['Access and inventory movements','User-specific authorized warehouse restrictions and product eligibility by warehouse through custom tables.'],
  ['Document and master-data validation','Controls for zero-value documents, inventory movements without cost, commercial eligibility of master data and supplier restrictions.'],
- ['Transaction rules','Document-level business validations through SBO_SP_TransactionNotification.']
+ ['Transaction rules','Document-level business validations through SBO_SP_TransactionNotification, including special tax application rules for selected products.']
  ]},
  {title:'Financial & Document Automation',intro:'Financial controls and document processing with SQL Server tools.',cards:[
  ['Budget Control by Cost Center','An alternative control extending standard budgeting capabilities with spending validation, configurable blocks and budget overrun notifications.'],
@@ -62,15 +76,17 @@ const copy={
  decision:'I prioritized native SAP Business One forms and functionality to reduce reliance on custom interfaces and facilitate maintenance during ERP upgrades.',
  diagramNote:'Conceptual component diagram. Integration mechanisms varied by solution; the VB.NET add-on was specific to manufacturing.',
  roleTitle:'My Role & Technology Stack',
- role:'ERP solution design, process customization, table and business-rule modeling, systems integration, document automation, financial controls and specialized integration development.'
+ role:'My involvement began with business teams’ needs: I analyzed problems, assessed SAP Business One capabilities, proposed alternatives and implemented them through standard configuration, customization or integration. This approach supported cost-center budget control, electronic invoicing adaptation, integration of actual raw-material consumption and specific tax rules.'
  }
 }
 export default function SAPCase({language}:{language:'ES'|'EN'}){
  const t=copy[language]
  return <section className="content project-detail sap-case">
  <a className="back-projects" href="#proyectos">{t.back}</a><p className="eyebrow">{t.eyebrow}</p>
- <h1>SAP Business One <span className="sap-title-divider">|</span> Enterprise Process Solutions</h1>
+ <h1>SAP Business One <span className="sap-title-divider">|</span> Implementation &amp; Enterprise Solutions</h1>
  <p className="sap-subtitle">{t.subtitle}</p><p className="section-description">{t.intro}</p>
+ <ul className="sap-capabilities" aria-label={t.implementation}>{t.capabilities.map((v,i)=><li key={v}><span aria-hidden="true">0{i+1}</span>{v}</li>)}</ul>
+ <section className="sap-implementation"><h2>{t.implementation}</h2><div className="sap-cards">{t.implementationCards.map(([title,text])=><article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div></section>
  <div className="sap-blocks">{t.blocks.map((block,i)=><section className="sap-block" key={block.title} aria-labelledby={`sap-block-${i}`}><header><span className="sap-block-number" aria-hidden="true">0{i+1}</span><div><h2 id={`sap-block-${i}`}>{block.title}</h2><p>{block.intro}</p></div></header><div className={`sap-cards ${block.cards.length===2?'sap-cards-two':''}`}>{block.cards.map(([title,text])=><article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div>{i===2&&<div className="sap-logistics-footer"><p>{t.api}</p><a className="case-link" href="#/projects/integrated-logistics-operations-suite">{t.logisticsLink}</a></div>}</section>)}</div>
  <section className="sap-architecture"><h2>{t.architecture}</h2><div className="sap-diagram" aria-label={t.architecture}><article><h3>SAP Business One</h3><p>{t.native}</p></article><span className="sap-connector" aria-hidden="true">↔</span><article><h3>SQL Server</h3><p>{t.sql}</p></article><span className="sap-connector" aria-hidden="true">↔</span><article><h3>{t.external}</h3></article></div><p>{t.decision}</p><p className="sap-note">{t.diagramNote}</p></section>
  <section className="sap-role"><h2>{t.roleTitle}</h2><p>{t.role}</p><div className="project-technologies">{['SAP Business One','SQL Server','T-SQL','Transaction Notification','PostTransactionNotification','SQL Server Agent','SSRS','SSIS','Power Apps','VB.NET'].map(v=><span key={v}>{v}</span>)}</div></section>
