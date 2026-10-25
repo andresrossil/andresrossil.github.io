@@ -6,9 +6,11 @@ const copy={
  intro:'Experiencia técnico-funcional para poner en funcionamiento SAP Business One, adaptar sus procesos y extenderlo cuando la configuración estándar no cubría las necesidades del negocio.',
  capabilities:['Implementar','Configurar','Extender e integrar'],
  implementation:'Implementación y administración',
+ hanaTitle:'Migración y soporte SAP HANA',
+ hanaText:'Participé en un proyecto de migración de SAP Business One a SAP HANA, con desarrollo y ejecución de consultas SQL en HANA y administración básica del entorno. Mi experiencia principal de instalación e implementación de infraestructura ERP se concentra en SAP Business One sobre SQL Server.',
  implementationCards:[
  ['Infraestructura e implementación','Preparación de servidores SAP Business One y SQL Server; instalación y configuración de componentes, servicios y acceso web. Implementaciones en empresas y proyectos independientes.'],
- ['Configuración de empresas y ERP','Aproximadamente diez empresas configuradas desde cero. Parametrización de compras, ventas, inventarios, bancos y contabilidad; series documentales, impuestos, autorizaciones y parámetros operativos según cada empresa.'],
+ ['Configuración de empresas y ERP','Aproximadamente diez empresas SAP Business One configuradas desde cero. Parametrización administrativa y operativa, series documentales, autorizaciones y ajustes específicos de validación e impuestos según los requerimientos de cada empresa.'],
  ['Configuración financiera y documental','Administración de cuentas de mayor y determinación contable, incluida la configuración por almacén. Conciliación de extractos bancarios; formatos de impresión de cheques y documentos comerciales. Adaptación a facturación electrónica con formatos personalizados y códigos de barras para lectura con escáner.']
  ],
  blocks:[
@@ -45,9 +47,11 @@ const copy={
  intro:'Technical and functional experience deploying SAP Business One, adapting its processes and extending it when standard configuration did not meet business needs.',
  capabilities:['Implement','Configure','Extend & Integrate'],
  implementation:'Implementation & Administration',
+ hanaTitle:'SAP HANA Migration & Support',
+ hanaText:'Participated in a SAP Business One migration to SAP HANA, gaining hands-on experience developing and executing HANA SQL queries and performing basic administration. My primary ERP infrastructure deployment experience remains focused on SAP Business One with SQL Server.',
  implementationCards:[
  ['Infrastructure & Deployment','Server preparation for SAP Business One and SQL Server; installation and configuration of components, services and web access. Deployment experience in companies and independent projects.'],
- ['Company Setup & ERP Configuration','Approximately ten companies configured from scratch. Purchasing, sales, inventory, banking and accounting setup; document numbering series, taxes, authorizations and operational parameters tailored to each company.'],
+ ['Company Setup & ERP Configuration','Approximately ten SAP Business One companies configured from scratch. Practical administrative and operational setup, document numbering series, authorizations and specific validation and tax settings tailored to each company’s requirements.'],
  ['Financial & Document Configuration','General ledger account administration and account determination, including warehouse-specific settings. Bank statement reconciliation; print layouts for checks and commercial documents. Electronic invoicing adaptation through custom layouts with barcodes for scanner reading.']
  ],
  blocks:[
@@ -86,10 +90,10 @@ export default function SAPCase({language}:{language:'ES'|'EN'}){
  <h1>SAP Business One <span className="sap-title-divider">|</span> Implementation &amp; Enterprise Solutions</h1>
  <p className="sap-subtitle">{t.subtitle}</p><p className="section-description">{t.intro}</p>
  <ul className="sap-capabilities" aria-label={t.implementation}>{t.capabilities.map((v,i)=><li key={v}><span aria-hidden="true">0{i+1}</span>{v}</li>)}</ul>
- <section className="sap-implementation"><h2>{t.implementation}</h2><div className="sap-cards">{t.implementationCards.map(([title,text])=><article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+ <section className="sap-implementation"><h2>{t.implementation}</h2><div className="sap-cards">{t.implementationCards.map(([title,text])=><article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div><aside className="sap-hana-note"><h3>{t.hanaTitle}</h3><p>{t.hanaText}</p></aside></section>
  <div className="sap-blocks">{t.blocks.map((block,i)=><section className="sap-block" key={block.title} aria-labelledby={`sap-block-${i}`}><header><span className="sap-block-number" aria-hidden="true">0{i+1}</span><div><h2 id={`sap-block-${i}`}>{block.title}</h2><p>{block.intro}</p></div></header><div className={`sap-cards ${block.cards.length===2?'sap-cards-two':''}`}>{block.cards.map(([title,text])=><article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div>{i===2&&<div className="sap-logistics-footer"><p>{t.api}</p><a className="case-link" href="#/projects/integrated-logistics-operations-suite">{t.logisticsLink}</a></div>}</section>)}</div>
  <section className="sap-architecture"><h2>{t.architecture}</h2><div className="sap-diagram" aria-label={t.architecture}><article><h3>SAP Business One</h3><p>{t.native}</p></article><span className="sap-connector" aria-hidden="true">↔</span><article><h3>SQL Server</h3><p>{t.sql}</p></article><span className="sap-connector" aria-hidden="true">↔</span><article><h3>{t.external}</h3></article></div><p>{t.decision}</p><p className="sap-note">{t.diagramNote}</p></section>
- <section className="sap-role"><h2>{t.roleTitle}</h2><p>{t.role}</p><div className="project-technologies">{['SAP Business One','SQL Server','T-SQL','Transaction Notification','PostTransactionNotification','SQL Server Agent','SSRS','SSIS','Power Apps','VB.NET'].map(v=><span key={v}>{v}</span>)}</div></section>
+ <section className="sap-role"><h2>{t.roleTitle}</h2><p>{t.role}</p><div className="project-technologies">{['SAP Business One','SQL Server','T-SQL','Transaction Notification','PostTransactionNotification','SQL Server Agent','SSRS','SSIS','Power Apps','VB.NET','SAP HANA'].map(v=><span key={v}>{v}</span>)}</div></section>
  <a className="back-projects" href="#proyectos">{t.back}</a>
  </section>
 }
