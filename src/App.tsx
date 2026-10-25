@@ -154,11 +154,11 @@ function App() {
   }, [hash, caseIndex])
 
   if (caseIndex === 0 && hash.endsWith('?cts')) {
-    return <main className="warehouse-app"><header className="warehouse-app-header"><a href="#/projects/corporate-bi-platform">← {language === 'EN' ? 'Back to case study' : 'Volver al caso'}</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></header><CTSDashboard language={language}/></main>
+    return <main className="warehouse-app"><header className="warehouse-app-header"><a href="#/projects/corporate-bi-platform">{language === 'EN' ? 'Back to case study' : 'Volver al caso'}</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></header><CTSDashboard language={language}/></main>
   }
 
   if (caseIndex === 0 && (hash.endsWith('?warehouse') || hash.endsWith('?demo'))) {
-    return <main className="warehouse-app"><header className="warehouse-app-header"><a href="#/projects/corporate-bi-platform">← {language === 'EN' ? 'Back to case study' : 'Volver al caso'}</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></header><WarehouseDemo language={language}/></main>
+    return <main className="warehouse-app"><header className="warehouse-app-header"><a href="#/projects/corporate-bi-platform">{language === 'EN' ? 'Back to case study' : 'Volver al caso'}</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></header><WarehouseDemo language={language}/></main>
   }
 
   if (caseIndex === 1) {
@@ -177,13 +177,13 @@ function App() {
           </div>
         </nav>
         <section className="content project-detail">
-          <a className="back-projects" href="#proyectos">← {language === 'EN' ? 'Back to projects' : 'Volver a proyectos'}</a>
+          <a className="back-projects" href="#proyectos">{language === 'EN' ? 'Back to projects' : 'Volver a proyectos'}</a>
           <p className="eyebrow">{project.category}</p>
           <h1>{project.title}</h1>
           <p className="section-description">{project.description}</p>
           <strong className="case-highlight">{caseStudy.highlight}</strong>
-          {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?warehouse">{language === 'EN' ? 'View Warehouse Operations Analytics' : 'Ver analítica de operaciones de almacén'} ↓</a></p>}
-          {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?cts">{language === 'EN' ? 'View Cost to Serve' : 'Ver Cost to Serve'} →</a></p>}
+          {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?warehouse">{language === 'EN' ? 'View Warehouse Operations Analytics' : 'Ver analítica de operaciones de almacén'}</a></p>}
+          {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?cts">{language === 'EN' ? 'View Cost to Serve' : 'Ver Cost to Serve'}</a></p>}
           <dl className="case-overview">
             <div><dt>{background.objective}</dt><dd>{caseStudy.objective}</dd></div>
             <div><dt>{background.solution}</dt><dd>{caseStudy.solution}</dd></div>
@@ -191,7 +191,7 @@ function App() {
           </dl>
           {caseIndex === 0 && <><BIArchitecture language={language} /></>}
           <div className="project-technologies">{project.technologies.map(tech => <span key={tech}>{tech}</span>)}</div>
-          <a className="secondary contact-button" href="#proyectos">← {language === 'EN' ? 'Back to projects' : 'Volver a proyectos'}</a>
+          <a className="secondary contact-button" href="#proyectos">{language === 'EN' ? 'Back to projects' : 'Volver a proyectos'}</a>
         </section>
       </main>
     )
@@ -244,9 +244,9 @@ function App() {
           <p className="description">{t.intro}</p>
 
           <div className="actions">
-            <a className="primary" href="mailto:nestorrossil@hotmail.com">{language==='ES'?'Contactar':'Contact'} →</a>
+            <a className="primary" href="mailto:nestorrossil@hotmail.com">{language==='ES'?'Contactar':'Contact'}</a>
             <a className="primary" href="#proyectos">
-              {t.explore} <span aria-hidden="true">→</span>
+              {t.explore}
             </a>
 
             <a
@@ -255,10 +255,10 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub ↗
+              GitHub
             </a>
             <a className="secondary" href="#experiencia" onClick={e=>{e.preventDefault();document.getElementById('experiencia')?.scrollIntoView({behavior:'smooth'})}}>
-              {language==='ES'?'Experiencia':'Experience'} ↓
+              {language==='ES'?'Experiencia':'Experience'}
             </a>
           </div>
         </div>
@@ -312,7 +312,7 @@ function App() {
               </dl>
 
               <a className="case-link" href={`#/projects/${projectRoutes[index]}`}>
-                {background.readCase} <span aria-hidden="true">→</span>
+                {background.readCase}
               </a>
 
               <div className="project-technologies">
@@ -368,7 +368,7 @@ function App() {
           className="primary contact-button"
           href="mailto:nestorrossil@hotmail.com"
         >
-          {t.contactButton} →
+          {t.contactButton}
         </a>
         <a
           className="secondary contact-button"
@@ -376,7 +376,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          LinkedIn ↗
+          LinkedIn
         </a>
         </div>
 

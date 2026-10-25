@@ -745,12 +745,13 @@ body .nav-links > a, body .enterprise-links a, body .warehouse-app-header > a {
   text-align: center;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 5px #233d5914, 0 0 0 1px #233d5909;
+  display: inline-flex;
+  box-shadow: 0 3px 8px #233d5929, 0 0 0 1px #233d5914;
 }
 body :is(.portfolio, .warehouse-app) button:not(:disabled):hover,
 body a:is(.primary, .secondary, .back-projects, .case-link):hover,
 body .nav-links > a:hover, body .enterprise-links a:hover, body .warehouse-app-header > a:hover {
-  box-shadow: 0 3px 8px #233d5924, 0 0 0 1px #233d5912;
+  box-shadow: 0 5px 12px #233d5938, 0 0 0 1px #233d5920;
 }
 body .actions a, body a.contact-button { display: inline-flex; gap: 8px; }
 .cts-filters { grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); }
@@ -790,3 +791,10 @@ body .actions a, body a.contact-button { display: inline-flex; gap: 8px; }
  .contact-actions a{max-width:100%;padding:14px 18px}
  .footer-bottom{font-size:11px;text-align:center}
 }
+
+/* Presentation actions and module links follow the shared button style. */
+body .wp-control, body .ilos-nav a {
+ display:inline-flex;align-items:center;justify-content:center;text-align:center;
+ box-shadow:0 3px 8px #233d5929,0 0 0 1px #233d5914;
+}
+body .ilos-nav a:hover {box-shadow:0 5px 12px #233d5938,0 0 0 1px #233d5920}

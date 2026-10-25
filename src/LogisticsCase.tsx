@@ -51,7 +51,7 @@ const content = {
 export default function LogisticsCase({language}:{language:'EN'|'ES'}) {
  const t=content[language]
  return <section className="content project-detail ilos">
-  <a className="back-projects" href="#proyectos">← {t.back}</a>
+  <a className="back-projects" href="#proyectos">{t.back}</a>
   <p className="eyebrow">{t.eyebrow}</p><h1>Integrated Logistics Operations Suite</h1>
   <p className="section-description">{t.intro}</p>
   <div className="project-technologies">{['Power Apps','SQL Server','SAP Business One','APIs'].map(x=><span key={x}>{x}</span>)}</div>
@@ -68,7 +68,7 @@ export default function LogisticsCase({language}:{language:'EN'|'ES'}) {
   <section><h2>{t.gallery}</h2></section>
   {t.apps.map(app=><section className="ilos-module" id={`ilos-${app.id}`} key={app.id}><p className="eyebrow">POWER APPS</p><h2>{app.title}</h2><p>{app.text}</p>{app.id==='warehouse'?<WarehousePreview language={language}/>:<LogisticsPreview language={language} app={app.id as 'auditing'|'freight'|'delivery'}/>}</section>)}
   <section className="ilos-role"><h2>{t.scopeTitle}</h2><p>{t.scope}</p></section>
-  <a className="back-projects" href="#proyectos">← {t.back}</a>
+  <a className="back-projects" href="#proyectos">{t.back}</a>
   <p className="ilos-endnote">{language==='ES'?'Interfaces reconstruidas a partir de aplicaciones reales desarrolladas en Power Apps.':'Interfaces reconstructed from real applications developed in Power Apps.'}</p>
  </section>
 }
