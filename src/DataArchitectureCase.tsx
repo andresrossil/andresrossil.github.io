@@ -1,4 +1,5 @@
 import './DataArchitectureCase.css'
+import { CaseNav } from './PortfolioAudit'
 const copy={
  ES:{
  back:'Volver a proyectos',eyebrow:'INGENIERÍA DE DATOS · ARQUITECTURA BI',
@@ -46,6 +47,7 @@ export default function DataArchitectureCase({language}:{language:'ES'|'EN'}){
   <a className="back-projects" href="#proyectos">{t.back}</a>
   <p className="eyebrow">{t.eyebrow}</p><h1>Enterprise Data Architecture &amp; ETL</h1>
   <p className="section-description">{t.intro}</p>
+  <CaseNav language={language} items={[[ 'data-architecture-heading',language==='ES'?'Arquitectura':'Architecture'],['data-decisions-heading',language==='ES'?'Decisiones':'Decisions'],['data-role-heading',language==='ES'?'Mi participación':'My role']]}/>
   <section className="data-section" aria-labelledby="data-architecture-heading">
    <h2 id="data-architecture-heading">{t.architecture}</h2>
    <div className="data-diagram"><ol className="data-flow" aria-label={t.architecture}>{t.stages.map(([title,...details],i)=><li key={title}><span className="data-node-index" aria-hidden="true">{String(i+1).padStart(2,'0')}</span><h3>{title}</h3><div>{details.map(detail=><span key={detail}>{detail}</span>)}</div></li>)}</ol></div>
@@ -53,6 +55,7 @@ export default function DataArchitectureCase({language}:{language:'ES'|'EN'}){
   </section>
   <section className="data-section" aria-labelledby="data-decisions-heading"><h2 id="data-decisions-heading">{t.decisions}</h2><div className="data-decisions">{t.cards.map(([title,text],i)=><article key={title}><span className="data-card-number" aria-hidden="true">0{i+1}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></section>
   <section className="data-section data-role" aria-labelledby="data-role-heading"><h2 id="data-role-heading">{t.roleTitle}</h2><p>{t.role}</p><div className="project-technologies">{stack.map(tech=><span key={tech}>{tech}</span>)}</div></section>
+  <p><a className="case-link" href="#/projects/corporate-bi-platform">{language==='ES'?'Ver soluciones de visualización y distribución de BI':'Explore BI visualization and reporting delivery'}</a></p>
   <p className="data-note">{t.note}</p><a className="back-projects" href="#proyectos">{t.back}</a>
  </section>
 }

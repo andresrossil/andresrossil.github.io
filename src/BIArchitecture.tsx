@@ -7,10 +7,10 @@ const copy = {
     note: 'Conceptual representation based on professional experience, not the exact infrastructure of any company. Sources and connections are illustrative.',
     sources: 'Information sources',
     categories: ['ERP / Enterprise Systems', 'Warehouse Management System (WMS)', 'Business Applications / SQL Server', 'Excel / Flat Files', 'External Partner Data'],
-    direct: 'Direct Query', etl: 'ETL Process',
+    direct: 'SQL Query Access', etl: 'ETL Process',
     access: 'SQL access layer',
     mechanisms: 'Alternative or complementary access mechanisms',
-    directNote: 'SQL query path for compatible sources. Files and external data may require prior loading. This represents a query workflow, not a claim that every source supports Power BI DirectQuery.',
+    directNote: 'SQL query path for compatible sources. Files and external data may require prior loading. SQL access mechanisms are distinct from ETL processing and reporting tools.',
     etlNote: 'Data integration through SSIS and SQL Server. Select a stage to inspect its purpose and technologies.',
     directSteps: [
       { title: 'SQL views', text: 'SQL Server views expose selected operational data for reporting.' },
@@ -35,10 +35,10 @@ const copy = {
     note: 'Representación conceptual basada en la experiencia profesional, no en la infraestructura exacta de una empresa. Las fuentes y conexiones son ilustrativas.',
     sources: 'Fuentes de información',
     categories: ['ERP / Sistemas empresariales', 'Sistema de gestión de almacenes (WMS)', 'Aplicaciones empresariales / SQL Server', 'Excel / Archivos planos', 'Datos de socios externos'],
-    direct: 'Consulta directa', etl: 'Proceso ETL',
+    direct: 'Acceso mediante consultas SQL', etl: 'Proceso ETL',
     access: 'Capa de acceso SQL',
     mechanisms: 'Mecanismos de acceso alternativos o complementarios',
-    directNote: 'Recorrido de consulta SQL para fuentes compatibles. Los archivos y datos externos pueden requerir carga previa. Representa un flujo de consulta, sin afirmar que todas las fuentes admiten Power BI DirectQuery.',
+    directNote: 'Recorrido de consulta SQL para fuentes compatibles. Los archivos y datos externos pueden requerir carga previa. Los mecanismos de acceso SQL son distintos del procesamiento ETL y de las herramientas de reportería.',
     etlNote: 'Integración de datos mediante SSIS y SQL Server. Selecciona una etapa para consultar su función y tecnologías.',
     directSteps: [
       { title: 'Vistas SQL', text: 'Las vistas de SQL Server exponen datos operativos seleccionados para reportería.' },
@@ -68,7 +68,7 @@ export default function BIArchitecture({ language }: { language: 'EN' | 'ES' }) 
   const steps = path === 'direct' ? t.directSteps : t.etlSteps
 
   return (
-    <section className="bi-architecture" aria-labelledby={`${panelId}-heading`}>
+    <section className="bi-architecture" id="bi-architecture" aria-labelledby={`${panelId}-heading`}>
       <h2 id={`${panelId}-heading`}>{t.title}</h2>
       <p className="architecture-note">{t.note}</p>
       <h3>{t.sources}</h3>

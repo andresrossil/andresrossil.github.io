@@ -17,7 +17,7 @@ export default function LogisticsPreview({language,app}:Props) {
  const field=(label:string,value:string)=> <div className="wp-field"><span>{label}</span><strong>{value}</strong></div>
  const fields=(children:ReactNode)=> <div className="wp-fields">{children}</div>
  const metrics=(items:[string,string][])=> <div className="wp-comparison">{items.map(([k,v])=><div key={k}>{k}<strong>{v}</strong></div>)}</div>
- const actions=(labels:string[])=> <div className="wp-actions">{labels.map((l,i)=><span key={l} className={`wp-control ${i===0?'wp-primary':''}`}>{l}</span>)}</div>
+ const actions=(labels:string[])=> <div className="wp-actions">{labels.map((l,i)=><span key={l} role="button" aria-disabled="true" className={`wp-control ${i===0?'wp-primary':''}`}>{l}</span>)}</div>
  const table=(head:string[],rows:(string|number)[][])=> <div className="lp-table-wrap"><table className="lp-table"><thead><tr>{head.map(h=><th key={h}>{h}</th>)}</tr></thead><tbody>{rows.map((r,i)=><tr key={i}>{r.map((v,j)=><td key={j}>{v}</td>)}</tr>)}</tbody></table></div>
  let body:ReactNode
  if(app==='auditing') {

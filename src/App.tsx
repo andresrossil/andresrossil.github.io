@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from 'react'
 import './App.css'
+import { resolveLanguage, languageURL } from './languagePreference'
+import { CaseNav } from './PortfolioAudit'
 import { homeProjects } from './homeProjects'
 import { career } from './career'
 import BIArchitecture from './BIArchitecture'
@@ -22,7 +24,7 @@ const translations = {
     role: 'Senior Enterprise Systems & BI Solutions Consultant',
     intro:
       "I work at the intersection of business operations and technology, translating operational requirements into practical enterprise solutions. My experience spans solution design, SAP Business One implementation and customization, SQL Server, data integration, business intelligence and process automation—from identifying business needs to delivering working solutions.",
-    specialty: 'SAP Business One | SQL Server | Business Intelligence | Enterprise Integration',
+    specialty: 'SAP Business One (SAP B1) | SQL Server / BI | SSRS | Power Apps',
     approach: 'How I work',
     capabilities: [
       ['Business Needs Analysis','Working directly with business teams to understand operational needs and problems.'],
@@ -78,7 +80,7 @@ const translations = {
     role: 'Consultor sénior en sistemas empresariales y soluciones BI',
     intro:
       'Trabajo en la intersección entre las operaciones empresariales y la tecnología, transformando necesidades operativas en soluciones prácticas. Mi experiencia abarca el diseño de soluciones, implementación y personalización de SAP Business One, SQL Server, integración de datos, inteligencia de negocios y automatización de procesos, desde la identificación de necesidades hasta la implementación.',
-    specialty: 'SAP Business One | SQL Server | Inteligencia de negocios | Integración empresarial',
+    specialty: 'SAP Business One (SAP B1) | SQL Server / BI | SSRS | Power Apps',
     approach: 'Mi forma de trabajar',
     capabilities: [
       ['Análisis de necesidades','Trabajo directo con las áreas de negocio para comprender necesidades y problemas operativos.'],
@@ -146,7 +148,7 @@ const skills = [
 const projectRoutes = ['corporate-bi-platform', 'integrated-logistics-operations-suite', 'sap-business-one', 'enterprise-data-architecture-etl']
 
 function App() {
-  const [language, setLanguage] = useState<Language>('EN')
+  const [language, setLanguage] = useState<Language>(()=>{let saved=null;try{saved=localStorage.getItem('portfolio-language')}catch{/* Storage may be unavailable. */}return resolveLanguage(window.location.search,saved)})
   const [hash, setHash] = useState(() => window.location.hash)
   const caseIndex = projectRoutes.findIndex(route => hash.split('?')[0] === `#/projects/${route}` || (route === 'integrated-logistics-operations-suite' && hash.split('?')[0] === '#/projects/warehouse-operations'))
   const t = translations[language]
@@ -155,6 +157,8 @@ function App() {
 
   useEffect(() => {
     document.documentElement.lang = language.toLowerCase()
+    try{localStorage.setItem('portfolio-language',language)}catch{/* Keep URL language even without storage. */}
+    history.replaceState(history.state,'',languageURL(window.location.href,language))
     document.title = language === 'ES'
       ? 'Andrés Rossil | Consultor sénior en sistemas empresariales y BI'
       : 'Andrés Rossil | Senior Enterprise Systems & BI Solutions Consultant'
@@ -162,8 +166,10 @@ function App() {
 
   useEffect(() => {
     const navigate = () => setHash(window.location.hash)
+    const restoreLanguage=()=>{let saved=null;try{saved=localStorage.getItem('portfolio-language')}catch{/* URL remains authoritative. */}setLanguage(resolveLanguage(window.location.search,saved));navigate()}
     window.addEventListener('hashchange', navigate)
-    return () => window.removeEventListener('hashchange', navigate)
+    window.addEventListener('popstate',restoreLanguage)
+    return () => {window.removeEventListener('hashchange',navigate);window.removeEventListener('popstate',restoreLanguage)}
   }, [])
 
   useEffect(() => {
@@ -213,11 +219,13 @@ function App() {
           <strong className="case-highlight">{caseStudy.highlight}</strong>
           {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?warehouse">{language === 'EN' ? 'View Warehouse Operations Analytics' : 'Ver analítica de operaciones de almacén'}</a></p>}
           {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?cts">{language === 'EN' ? 'View Cost to Serve' : 'Ver Cost to Serve'}</a></p>}
-          <dl className="case-overview">
+          {caseIndex===0&&<CaseNav language={language} items={[[ 'bi-summary',language==='ES'?'Alcance':'Scope'],['bi-delivery-title',language==='ES'?'Soluciones BI':'BI solutions'],['bi-architecture',language==='ES'?'Arquitectura':'Architecture']]}/>}
+          <dl className="case-overview" id="bi-summary">
             <div><dt>{background.objective}</dt><dd>{caseStudy.objective}</dd></div>
             <div><dt>{background.solution}</dt><dd>{caseIndex===0?(language==='ES'?'Comprensión de necesidades de información, preparación de consultas SQL y estructuras de datos, desarrollo de análisis y reportes, y automatización de su distribución. Adaptación de cada solución a las herramientas y accesos disponibles para los usuarios.':'Understanding information needs, preparing SQL queries and data structures, developing analytics and reports, and automating distribution. Adapting each solution to the tools and access available to its users.'):caseStudy.solution}</dd></div>
             <div><dt>{background.result}</dt><dd>{caseStudy.result}</dd></div>
           </dl>
+          {caseIndex===0&&<p><a className="case-link" href="#/projects/enterprise-data-architecture-etl">{language==='ES'?'Ver diseño de capas e integración ETL':'Explore data layers and ETL design'}</a></p>}
           {caseIndex === 0 && <><BIReportingCapabilities language={language}/><BIArchitecture language={language} /></>}
           <div className="project-technologies">{project.technologies.map(tech => <span key={tech}>{tech}</span>)}</div>
           <a className="secondary contact-button" href="#proyectos">{language === 'EN' ? 'Back to projects' : 'Volver a proyectos'}</a>

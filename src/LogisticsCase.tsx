@@ -14,7 +14,7 @@ const content = {
   sap: 'SAP Business One', sapText: 'ERP integration within the operational workflow.',
   flow: 'Operational workflow', steps: ['Warehouse execution', 'Review and correction', 'Route execution', 'Returns and settlement'],
   expenseFlow: 'Transport expense requests and authorizations support the logistics operation as a separate workflow.',
-  gallery: 'Application screens', imageNote: 'Warehouse is presented as a visual recreation with fictional data. Other application screens are from the original development environment. Empty fields and editor indicators are retained. The approval screen is a redacted derivative; these images do not demonstrate live system execution.',
+  gallery: 'Application screens',
   close: 'Close image', enlarge: 'Enlarge', redacted: 'Redacted for confidentiality',
   scopeTitle: 'Scope and deliverables',
   scope: 'Four business applications, a shared SQL Server layer and integration requirements for the external API developers. The case presents functional scope and interface walkthroughs, without unverified impact metrics.',
@@ -36,7 +36,7 @@ const content = {
   sap: 'SAP Business One', sapText: 'Integración ERP dentro del flujo operativo.',
   flow: 'Flujo operativo', steps: ['Ejecución de almacén', 'Revisión y corrección', 'Ejecución de ruta', 'Devoluciones y liquidación'],
   expenseFlow: 'Las solicitudes y autorizaciones de gastos de transporte apoyan la operación logística mediante un flujo independiente.',
-  gallery: 'Pantallas de las aplicaciones', imageNote: 'Warehouse se presenta como recreación visual con datos ficticios. Las demás capturas corresponden al entorno de desarrollo original. Se conservan los campos vacíos e indicadores del editor. La autorización es una copia anonimizada; las imágenes no demuestran una ejecución del sistema en producción.',
+  gallery: 'Pantallas de las aplicaciones',
   close: 'Cerrar imagen', enlarge: 'Ampliar', redacted: 'Anonimizada por confidencialidad',
   scopeTitle: 'Alcance y entregables',
   scope: 'Cuatro aplicaciones empresariales, una capa SQL Server compartida y requerimientos de integración para los desarrolladores externos de API. El caso presenta alcance funcional y recorridos de interfaz, sin métricas de impacto no verificadas.',
@@ -55,7 +55,7 @@ export default function LogisticsCase({language}:{language:'EN'|'ES'}) {
   <p className="eyebrow">{t.eyebrow}</p><h1>Integrated Logistics Operations Suite</h1>
   <p className="section-description">{t.intro}</p>
   <div className="project-technologies">{['Power Apps','SQL Server','SAP Business One','APIs'].map(x=><span key={x}>{x}</span>)}</div>
-  <nav className="ilos-nav" aria-label={t.gallery}>{t.apps.map(a=><a href={`#ilos-${a.id}`} key={a.id} onClick={e=>{e.preventDefault();document.getElementById(`ilos-${a.id}`)?.scrollIntoView({behavior:'smooth'})}}>{a.title}</a>)}</nav>
+  <nav className="ilos-nav" aria-label={t.gallery}>{t.apps.map(a=><a href={`#ilos-${a.id}`} key={a.id} onClick={e=>{e.preventDefault();document.getElementById(`ilos-${a.id}`)?.scrollIntoView({behavior:'smooth'})}}>{a.title}</a>)}<a href="mailto:nestorrossil@hotmail.com">{language==='ES'?'Contacto':'Contact'}</a></nav>
   <section className="ilos-role"><h2>{t.roleTitle}</h2><p>{t.role}</p></section>
   <section aria-labelledby="ilos-architecture"><h2 id="ilos-architecture">{t.architecture}</h2><p>{t.architectureNote}</p>
    <div className="ilos-app-layer">{t.apps.map(a=><div key={a.id}><strong>{a.title}</strong><small>Power Apps</small></div>)}</div>
@@ -65,10 +65,10 @@ export default function LogisticsCase({language}:{language:'EN'|'ES'}) {
    <div className="ilos-integration"><div><h3>{t.api}</h3><p>{t.apiText}</p></div><div><h3>{t.sap}</h3><p>{t.sapText}</p></div></div>
   </section>
   <section><h2>{t.flow}</h2><ol className="ilos-flow">{t.steps.map(s=><li key={s}>{s}</li>)}</ol><p>{t.expenseFlow}</p></section>
-  <section><h2>{t.gallery}</h2></section>
+  <section><h2>{t.gallery}</h2><p className="presentation-controls-note">{language==='ES'?'Los botones de navegación cambian de pantalla. Los campos y las acciones de registrar, validar, autorizar o liquidar son elementos ilustrativos y no ejecutan operaciones.':'Navigation buttons switch screens. Fields and actions such as register, validate, approve or settle are illustrative elements and do not perform operations.'}</p></section>
   {t.apps.map(app=><section className="ilos-module" id={`ilos-${app.id}`} key={app.id}><p className="eyebrow">POWER APPS</p><h2>{app.title}</h2><p>{app.text}</p>{app.id==='warehouse'?<WarehousePreview language={language}/>:<LogisticsPreview language={language} app={app.id as 'auditing'|'freight'|'delivery'}/>}</section>)}
   <section className="ilos-role"><h2>{t.scopeTitle}</h2><p>{t.scope}</p></section>
   <a className="back-projects" href="#proyectos">{t.back}</a>
-  <p className="ilos-endnote">{language==='ES'?'Interfaces reconstruidas a partir de aplicaciones reales desarrolladas en Power Apps.':'Interfaces reconstructed from real applications developed in Power Apps.'}</p>
+  <p className="ilos-endnote">{language==='ES'?'Visualización de portafolio basada en experiencia profesional.':'Portfolio visualization based on professional solution experience.'}</p>
  </section>
 }
