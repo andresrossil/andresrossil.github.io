@@ -18,18 +18,26 @@ const translations = {
   EN: {
     nav: ['Projects', 'Experience', 'Contact'],
     eyebrow: 'BUSINESS INTELLIGENCE & ERP SOLUTIONS',
-    role: 'Senior BI & ERP Consultant',
+    role: 'Senior Enterprise Systems & BI Solutions Consultant',
     intro:
-      '13+ years in BI and ERP, including end-to-end responsibility for the design and implementation of a corporate BI platform. Technical experience with SQL Server, Power BI, SSIS, Power Apps and SAP.',
+      "I work at the intersection of business operations and technology, translating operational requirements into practical enterprise solutions. My experience spans solution design, SAP Business One implementation and customization, SQL Server, data integration, business intelligence and process automation—from identifying business needs to delivering working solutions.",
+    specialty: 'SAP Business One | SQL Server | Business Intelligence | Enterprise Integration',
+    approach: 'How I work',
+    capabilities: [
+      ['Business Needs Analysis','Working directly with business teams to understand operational needs and problems.'],
+      ['Solution Design','Evaluating alternatives and proposing practical technical solutions.'],
+      ['Implementation & Integration','Developing, configuring and integrating enterprise systems.'],
+      ['Business Intelligence & Automation','Turning data and processes into tools that support decision-making.'],
+    ],
     explore: 'Explore Projects',
-    sapExperience: '10+ years working with SAP Business One as part of broader BI and ERP responsibilities.',
+    sapExperience: '10+ years working with SAP Business One as part of broader BI and ERP responsibilities. Installation and configuration of SAP Business One and SQL Server environments, company databases, services and web access; functional and administrative ERP configuration, native forms, process controls and external integrations. Approximately ten companies configured in SAP Business One.',
     years: 'Years of Experience',
     dashboards: 'Power BI Dashboards',
     etl: 'ETL Processes',
     experienceLabel: 'PROFESSIONAL BACKGROUND',
     experienceTitle: 'Professional Experience',
     experienceDescription:
-      'Experience spanning BI architecture, ETL development, data modeling, enterprise applications and ERP functional support.',
+      'Business needs analysis, solution design and end-to-end implementation, backed by hands-on BI, SQL Server, integration and ERP experience.',
     projectsLabel: 'FEATURED WORK',
     projectsTitle: 'Selected Case Studies',
     projects: [
@@ -66,18 +74,26 @@ const translations = {
   ES: {
     nav: ['Proyectos', 'Experiencia', 'Contacto'],
     eyebrow: 'INTELIGENCIA DE NEGOCIOS Y SOLUCIONES ERP',
-    role: 'Consultor Senior de BI y ERP',
+    role: 'Consultor sénior en sistemas empresariales y soluciones BI',
     intro:
-      '13+ años en BI y ERP, con responsabilidad integral en el diseño e implementación de una plataforma corporativa de BI. Experiencia técnica con SQL Server, Power BI, SSIS, Power Apps y SAP.',
+      'Trabajo en la intersección entre las operaciones empresariales y la tecnología, transformando necesidades operativas en soluciones prácticas. Mi experiencia abarca el diseño de soluciones, implementación y personalización de SAP Business One, SQL Server, integración de datos, inteligencia de negocios y automatización de procesos, desde la identificación de necesidades hasta la implementación.',
+    specialty: 'SAP Business One | SQL Server | Inteligencia de negocios | Integración empresarial',
+    approach: 'Mi forma de trabajar',
+    capabilities: [
+      ['Análisis de necesidades','Trabajo directo con las áreas de negocio para comprender necesidades y problemas operativos.'],
+      ['Diseño de soluciones','Evaluación de alternativas y propuesta de soluciones técnicas prácticas.'],
+      ['Implementación e integración','Desarrollo, configuración e integración de sistemas empresariales.'],
+      ['Inteligencia de negocios y automatización','Transformación de datos y procesos en herramientas para la toma de decisiones.'],
+    ],
     explore: 'Explorar proyectos',
-    sapExperience: 'Más de 10 años trabajando con SAP Business One dentro de responsabilidades más amplias de BI y ERP.',
+    sapExperience: 'Más de 10 años trabajando con SAP Business One dentro de responsabilidades más amplias de BI y ERP. Instalación y configuración de entornos SAP Business One y SQL Server, empresas, servicios y acceso web; parametrización funcional y administrativa, formularios nativos, controles de procesos e integraciones externas. Aproximadamente diez empresas configuradas en SAP Business One.',
     years: 'Años de experiencia',
     dashboards: 'Dashboards Power BI',
     etl: 'Procesos ETL',
     experienceLabel: 'TRAYECTORIA PROFESIONAL',
     experienceTitle: 'Experiencia profesional',
     experienceDescription:
-      'Experiencia en arquitectura de BI, desarrollo de procesos ETL, modelado de datos, aplicaciones empresariales y soporte funcional ERP.',
+      'Análisis de necesidades, diseño de soluciones e implementación de principio a fin, con experiencia técnica en BI, SQL Server, integración y sistemas ERP.',
     projectsLabel: 'TRABAJOS DESTACADOS',
     projectsTitle: 'Casos de experiencia',
     projects: [
@@ -139,8 +155,8 @@ function App() {
   useEffect(() => {
     document.documentElement.lang = language.toLowerCase()
     document.title = language === 'ES'
-      ? 'Andrés Rossil | Consultor Senior de BI y ERP'
-      : 'Andrés Rossil | Senior BI & ERP Consultant'
+      ? 'Andrés Rossil | Consultor sénior en sistemas empresariales y BI'
+      : 'Andrés Rossil | Senior Enterprise Systems & BI Solutions Consultant'
   }, [language])
 
   useEffect(() => {
@@ -252,6 +268,7 @@ function App() {
           </h1>
 
           <h2>{t.role}</h2>
+          <p className="hero-specialty">{t.specialty}</p>
 
           <p className="description">{t.intro}</p>
 
@@ -298,6 +315,10 @@ function App() {
           <span>{t.etl}</span>
         </div>
       </section>
+
+      <div className="home-capabilities" role="region" aria-label={t.approach}>
+        <ul>{t.capabilities.map(([title,text],i)=><li key={title}><span aria-hidden="true">0{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}</ul>
+      </div>
 
       <section className="content projects-section" id="proyectos">
         <p className="eyebrow">{t.projectsLabel}</p>

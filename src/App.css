@@ -798,3 +798,14 @@ body .wp-control, body .ilos-nav a {
  box-shadow:0 3px 8px #233d5929,0 0 0 1px #233d5914;
 }
 body .ilos-nav a:hover {box-shadow:0 5px 12px #233d5938,0 0 0 1px #233d5920}
+
+.hero-specialty{font-size:13px;font-weight:600;color:var(--accent);line-height:1.8;max-width:650px}
+.home-capabilities{padding:0 8% 48px;background:white}
+.home-capabilities ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;list-style:none;margin:0;padding:0}
+.home-capabilities li{border-top:2px solid #c8dcec;padding:20px 0 0;min-width:0}
+.home-capabilities li>span{font-size:11px;font-weight:700;color:var(--accent)}
+.home-capabilities h3{font-size:16px;line-height:1.5;color:var(--text-primary);margin:10px 0}
+.home-capabilities p{font-size:13px;line-height:1.8;color:var(--text-secondary);margin:0}
+@media(max-width:1000px){.home-capabilities ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.home-capabilities{padding:0 6% 36px}.hero-specialty{font-size:12px}}
+@media(max-width:440px){.home-capabilities ul{grid-template-columns:1fr;gap:18px}.home-capabilities li{padding-top:14px}.home-capabilities h3{margin:6px 0}.home-capabilities p{font-size:12px}}
