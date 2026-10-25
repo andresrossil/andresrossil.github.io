@@ -1,0 +1,7 @@
+.dashboard-presentation .dashboard-context{font-size:13px;color:var(--text-secondary);line-height:1.7;margin:0 0 22px}
+.dashboard-presentation .dashboard-perspectives{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px}
+.dashboard-presentation .dashboard-perspectives button{border:1px solid var(--border-color);border-radius:7px;padding:11px 16px;background:white;color:var(--accent);font:inherit;font-size:13px;cursor:pointer}
+.dashboard-presentation .dashboard-perspectives button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:white}
+.dashboard-presentation .dashboard-endnote{border-top:1px solid var(--border-color);padding-top:18px;margin-top:28px;color:var(--text-secondary);font-size:12px;line-height:1.7}
+.dashboard-presentation .dashboard-perspectives button:focus-visible{outline:3px solid #158ac5;outline-offset:3px}
+@media(max-width:360px){.dashboard-presentation .dashboard-perspectives button{width:100%}.dashboard-presentation .ops-kpi strong{font-size:21px}.dashboard-presentation .ops-bar-row>div:first-child{flex-wrap:wrap;gap:6px}.dashboard-presentation .ops-bar-row strong{overflow-wrap:anywhere}.dashboard-presentation .ops-brand{min-width:0}.dashboard-presentation .ops-main{padding:14px}}
