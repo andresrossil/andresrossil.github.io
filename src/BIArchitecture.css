@@ -1,0 +1,6 @@
+/* Presentation refinements only: keep existing architecture paths and nodes. */
+.bi-project .architecture-flow>li>button{display:flex;align-items:center;justify-content:center;text-align:center;padding:18px 12px}
+.bi-project .architecture-controls{gap:8px;padding:6px}
+.bi-project .sql-access-options button{display:flex;align-items:center;justify-content:center;text-align:center}
+.bi-project .ssrs-capability{margin-top:24px;padding-top:22px;border-top:1px solid var(--border-color)}
+@media(max-width:900px){.bi-project .architecture-flow{gap:24px}.bi-project .architecture-flow>li>button{min-height:58px}.bi-project .architecture-flow li:not(:last-child)::after{bottom:-23px;left:50%;transform:translateX(-50%)}}

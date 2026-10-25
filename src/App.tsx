@@ -46,7 +46,7 @@ const translations = {
         category: 'DATA & ANALYTICS',
         title: 'Corporate BI Platform',
         description:
-          'Enterprise BI solutions combining SQL Server, data integration, Power BI dashboards, automated SSRS reporting and Excel analytics.',
+          'Enterprise BI solutions and reporting initiatives across SQL Server, data integration, Power BI, SSRS and Excel.',
         technologies: ['SQL Server', 'SSIS', 'Power BI', 'SSRS', 'Excel', 'SQL Server Agent'],
       },
       {
@@ -100,9 +100,9 @@ const translations = {
     projects: [
       {
         category: 'DATOS Y ANALÍTICA',
-        title: 'Plataforma corporativa de BI',
+        title: 'Corporate BI Platform',
         description:
-          'Soluciones empresariales de BI con SQL Server, integración de datos, dashboards Power BI, reportes SSRS automatizados y análisis en Excel.',
+          'Soluciones e iniciativas empresariales de BI con SQL Server, integración de datos, Power BI, SSRS y Excel.',
         technologies: ['SQL Server', 'SSIS', 'Power BI', 'SSRS', 'Excel', 'SQL Server Agent'],
       },
       {

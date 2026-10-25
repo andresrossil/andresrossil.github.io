@@ -1,4 +1,5 @@
 import { useId, useState } from 'react'
+import './BIArchitecture.css'
 
 const copy = {
   EN: {
@@ -26,8 +27,8 @@ const copy = {
       { title: 'Information consumption', text: 'Power BI dashboards and SSRS reports use the consolidated reporting data.' },
     ],
     orchestration: 'Process orchestration: SQL Server Agent and stored procedures support scheduled execution and automation.',
-    automationTitle: 'Complementary capability · SSRS automation',
-    automation: 'SSRS customization developed through reverse engineering of subscription XML enables fully automatic report distribution to recipients determined by SQL tables or business actions, without manual subscription changes. No internal XML or configurations are shown.',
+    automationTitle: 'Advanced SSRS Subscription Automation',
+    automation: 'Developed custom SSRS report distribution automation by reverse-engineering subscription XML structures and dynamically updating email delivery parameters, including sender, recipients, subject and message body. This enabled flexible, automated report distribution based on business requirements without manually reconfiguring individual subscriptions.',
   },
   ES: {
     title: 'Arquitectura conceptual de BI',
@@ -54,8 +55,8 @@ const copy = {
       { title: 'Consumo de información', text: 'Los dashboards Power BI y reportes SSRS utilizan los datos consolidados de reportería.' },
     ],
     orchestration: 'Orquestación de procesos: SQL Server Agent y procedimientos almacenados permiten programar la ejecución y automatizar procesos.',
-    automationTitle: 'Capacidad complementaria · Automatización SSRS',
-    automation: 'Personalización de SSRS desarrollada mediante ingeniería inversa del XML de suscripciones para distribuir reportes de forma completamente automática a destinatarios definidos por tablas SQL o acciones del negocio, sin ajustes manuales de suscripciones. No se muestran XML ni configuraciones internas.',
+    automationTitle: 'Automatización avanzada de suscripciones SSRS',
+    automation: 'Desarrollé una automatización personalizada de distribución de reportes SSRS mediante ingeniería inversa de la estructura XML de las suscripciones. Actualizaba dinámicamente remitente, destinatarios, asunto, cuerpo del mensaje y otros parámetros de entrega según los requerimientos del negocio, permitiendo distribuciones masivas sin reconfigurar manualmente cada suscripción.',
   },
 }
 
@@ -89,7 +90,7 @@ export default function BIArchitecture({ language }: { language: 'EN' | 'ES' }) 
         </ol>
       ) : (
         <ol className="architecture-flow">
-          {steps.map((step, index) => <li key={step.title}><button type="button" className={index === selected ? 'selected' : ''} aria-pressed={index === selected} aria-controls={panelId} onClick={() => setSelected(index)}><span>{index + 1}</span>{step.title}</button></li>)}
+          {steps.map((step, index) => <li key={step.title}><button type="button" className={index === selected ? 'selected' : ''} aria-pressed={index === selected} aria-controls={panelId} onClick={() => setSelected(index)}>{step.title}</button></li>)}
         </ol>
       )}
       <div id={panelId} className="architecture-inspector" role="region" aria-label={t[path]} aria-live="polite"><h3>{steps[selected].title}</h3><p>{steps[selected].text}</p></div>
