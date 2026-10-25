@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import images from './ilosImages.json'
+import WarehousePreview from './WarehousePreview'
 import './LogisticsCase.css'
 
 const content = {
@@ -15,7 +16,7 @@ const content = {
   roadnet: 'Roadnet', roadnetText: 'External route planning; separate from the applications I developed.',
   flow: 'Operational workflow', steps: ['Warehouse execution', 'Review and correction', 'Route execution', 'Returns and settlement'],
   expenseFlow: 'Transport expense requests and authorizations support the logistics operation as a separate workflow.',
-  gallery: 'Application screens', imageNote: 'Original application screens from the development environment. Empty fields and editor indicators are retained. The approval screen is a redacted derivative; these images do not demonstrate live system execution.',
+  gallery: 'Application screens', imageNote: 'Warehouse is presented as a visual recreation with fictional data. Other application screens are from the original development environment. Empty fields and editor indicators are retained. The approval screen is a redacted derivative; these images do not demonstrate live system execution.',
   close: 'Close image', enlarge: 'Enlarge', redacted: 'Redacted for confidentiality',
   scopeTitle: 'Scope and deliverables',
   scope: 'Four business applications, a shared SQL Server layer and integration requirements for the external API developers. The case presents functional scope and interface evidence, without unverified impact metrics.',
@@ -38,7 +39,7 @@ const content = {
   roadnet: 'Roadnet', roadnetText: 'Planificación externa de rutas, separada de las aplicaciones que desarrollé.',
   flow: 'Flujo operativo', steps: ['Ejecución de almacén', 'Revisión y corrección', 'Ejecución de ruta', 'Devoluciones y liquidación'],
   expenseFlow: 'Las solicitudes y autorizaciones de gastos de transporte apoyan la operación logística mediante un flujo independiente.',
-  gallery: 'Pantallas de las aplicaciones', imageNote: 'Capturas originales del entorno de desarrollo. Se conservan los campos vacíos e indicadores del editor. La autorización es una copia anonimizada; las imágenes no demuestran una ejecución del sistema en producción.',
+  gallery: 'Pantallas de las aplicaciones', imageNote: 'Warehouse se presenta como recreación visual con datos ficticios. Las demás capturas corresponden al entorno de desarrollo original. Se conservan los campos vacíos e indicadores del editor. La autorización es una copia anonimizada; las imágenes no demuestran una ejecución del sistema en producción.',
   close: 'Cerrar imagen', enlarge: 'Ampliar', redacted: 'Anonimizada por confidencialidad',
   scopeTitle: 'Alcance y entregables',
   scope: 'Cuatro aplicaciones empresariales, una capa SQL Server compartida y requerimientos de integración para los desarrolladores externos de API. El caso presenta alcance funcional y evidencia de interfaz, sin métricas de impacto no verificadas.',
@@ -71,7 +72,7 @@ export default function LogisticsCase({language}:{language:'EN'|'ES'}) {
   </section>
   <section><h2>{t.flow}</h2><ol className="ilos-flow">{t.steps.map(s=><li key={s}>{s}</li>)}</ol><p>{t.expenseFlow}</p></section>
   <section><h2>{t.gallery}</h2><p>{t.imageNote}</p></section>
-  {t.apps.map(app=><section className="ilos-module" id={`ilos-${app.id}`} key={app.id}><p className="eyebrow">POWER APPS</p><h2>{app.title}</h2><p>{app.text}</p><div className="ilos-gallery">{images.filter(i=>i.group===app.id).map((i,n)=>{const src=`/ilos/${i.file}`;return <figure key={src}><button className="ilos-image-button" onClick={()=>show(src,app.caps[n])} aria-label={`${t.enlarge}: ${app.caps[n]}`}><img src={src} alt={app.caps[n]} loading="lazy"/></button><figcaption>{app.caps[n]}{app.id==='freight'&&n===1&&<small>{t.redacted}</small>}</figcaption></figure>})}</div></section>)}
+  {t.apps.map(app=><section className="ilos-module" id={`ilos-${app.id}`} key={app.id}><p className="eyebrow">POWER APPS</p><h2>{app.title}</h2><p>{app.text}</p>{app.id==='warehouse'?<WarehousePreview language={language}/>:<div className="ilos-gallery">{images.filter(i=>i.group===app.id).map((i,n)=>{const src=`/ilos/${i.file}`;return <figure key={src}><button className="ilos-image-button" onClick={()=>show(src,app.caps[n])} aria-label={`${t.enlarge}: ${app.caps[n]}`}><img src={src} alt={app.caps[n]} loading="lazy"/></button><figcaption>{app.caps[n]}{app.id==='freight'&&n===1&&<small>{t.redacted}</small>}</figcaption></figure>})}</div>}</section>)}
   <section className="ilos-role"><h2>{t.scopeTitle}</h2><p>{t.scope}</p></section>
   <a className="back-projects" href="#proyectos">← {t.back}</a>
   <dialog ref={dialog} className="ilos-dialog" onClick={e=>{if(e.target===e.currentTarget)dialog.current?.close()}}><button className="back-projects" onClick={()=>dialog.current?.close()}>{t.close} ×</button>{active&&<><p>{active.caption}</p><img src={active.src} alt={active.caption}/></>}</dialog>
