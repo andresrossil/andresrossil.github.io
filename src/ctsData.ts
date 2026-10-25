@@ -87,7 +87,7 @@ export function sumCTS(rows:CTSResult[]){
  const totals=rows.reduce((a,r)=>({sales:a.sales+r.sales,cost:a.cost+r.cost,direct:a.direct+r.direct,indirect:a.indirect+r.indirect,corporate:a.corporate+r.corporate,expenses:a.expenses+r.expenses,margin:a.margin+r.margin,contribution:a.contribution+r.contribution}),{sales:0,cost:0,direct:0,indirect:0,corporate:0,expenses:0,margin:0,contribution:0})
  return {...totals,marginRate:ratio(totals.margin,totals.sales),cts:ratio(totals.expenses,totals.sales),contributionRate:ratio(totals.contribution,totals.sales)}
 }
-export function groupCTS(rows:CTSResult[],key:'unit'|'channel'|'center'|'month') {return [...new Set(rows.map(r=>r[key]))].map(id=>({id,...sumCTS(rows.filter(r=>r[key]===id))}))}
+export function groupCTS(rows:CTSResult[],key:'unit'|'channel'|'center'|'month') {return [...new Set(rows.map(r=>r[key]))].map(id=>({id,...scopeCTSTotal(rows.filter(r=>r[key]===id))}))}
 export function selectedAllocations(rows:CTSResult[],perspective:Perspective){const ids=new Set(rows.map(r=>r.id));return ctsAllocations.filter(a=>ids.has(a.row)).map(a=>({...a,kind:perspective==='unit'?a.unitKind:a.detailKind}))}
 
 // Corporate has no revenue of its own; its CTS uses total business sales for the same months.

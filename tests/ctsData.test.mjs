@@ -43,7 +43,7 @@ test('unit A reconciles to channel and center populations; corporate has correct
  const u=sumCTS(selectCTS('unit',{...all,unit:'U-A'}))
  for(const perspective of ['channel','center']){const s=sumCTS(selectCTS(perspective,all));for(const key of ['sales','cost','margin','expenses','contribution'])assert.equal(s[key],u[key]);assert.equal(s.direct+s.indirect,u.direct)}
  const corpRows=selectCTS('unit',{...all,unit:'CORP'});const total=scopeCTSTotal(corpRows)
- assert.equal(total.sales,0);assert.equal(total.cts,total.expenses/corporateSalesBase([...new Set(corpRows.map(r=>r.month))]));assert.equal(total.contributionRate,null)
+ assert.equal(total.sales,0);assert.equal(total.cts,total.expenses/corporateSalesBase([...new Set(corpRows.map(r=>r.month))]));assert.equal(total.contributionRate,null);assert.equal(groupCTS(corpRows,'unit')[0].cts,total.cts);assert.ok(groupCTS(corpRows,'month').every(g=>g.cts!==null))
 })
 test('all monthly filters and grouping views conserve amounts without rebasing allocations',()=>{
  for(const period of ['all',...Array.from({length:12},(_,i)=>`2025-${String(i+1).padStart(2,'0')}`)]){
