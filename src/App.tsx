@@ -4,6 +4,7 @@ import './App.css'
 import { career } from './career'
 import BIArchitecture from './BIArchitecture'
 import WarehouseDemo from './WarehouseDemo'
+import CTSDashboard from './CTSDashboard'
 
 const currentYear = new Date().getFullYear()
 
@@ -150,6 +151,10 @@ function App() {
     }
   }, [hash, caseIndex])
 
+  if (caseIndex === 0 && hash.endsWith('?cts')) {
+    return <main className="warehouse-app"><header className="warehouse-app-header"><a href="#/projects/corporate-bi-platform">← {language === 'EN' ? 'Back to case study' : 'Volver al caso'}</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></header><CTSDashboard language={language}/></main>
+  }
+
   if (caseIndex === 0 && (hash.endsWith('?warehouse') || hash.endsWith('?demo'))) {
     return <main className="warehouse-app"><header className="warehouse-app-header"><a href="#/projects/corporate-bi-platform">← {language === 'EN' ? 'Back to case study' : 'Volver al caso'}</a><div className="language-switch" role="group" aria-label="Language / Idioma">{(['ES','EN'] as const).map(option=><button key={option} className={`language-btn ${language===option?'active':''}`} aria-pressed={language===option} onClick={()=>setLanguage(option)}>{option}</button>)}</div></header><WarehouseDemo language={language}/></main>
   }
@@ -172,6 +177,7 @@ function App() {
           <p className="section-description">{project.description}</p>
           <strong className="case-highlight">{caseStudy.highlight}</strong>
           {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?warehouse">{language === 'EN' ? 'View Warehouse Operations Analytics' : 'Ver analítica de operaciones de almacén'} ↓</a></p>}
+          {caseIndex === 0 && <p><a className="back-projects" href="#/projects/corporate-bi-platform?cts">{language === 'EN' ? 'View Cost to Serve' : 'Ver Cost to Serve'} →</a></p>}
           <dl className="case-overview">
             <div><dt>{background.objective}</dt><dd>{caseStudy.objective}</dd></div>
             <div><dt>{background.solution}</dt><dd>{caseStudy.solution}</dd></div>
